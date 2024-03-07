@@ -184,3 +184,10 @@ Now we can install a local copy of our package which mimics a pip installation:
 ```bash
 poetry install
 ```
+
+We can now try it out by running
+```bash
+cancer-prediction run
+```
+
+and the streamlit app should open!
