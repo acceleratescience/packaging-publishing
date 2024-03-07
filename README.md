@@ -11,7 +11,7 @@ There are two branches to this repo:
 2. [Setting up Poetry](#poetry)\
     2.1. [File structure](#poetry-files)\
     2.2. [Licensing](#poetry-licensing)
-3. [Training and Augmenting GPT-2](#finetuning-gpt2)
+3. [Packaging up our software](#packaging)
 4. [Finetuning for classification](#bert)
 5. [No-code](#no-code)
 6. [Stable Diffusion](#stable-diffusion)
@@ -86,21 +86,23 @@ Compatible Python versions [^3.10]:
 
 Would you like to define your main dependencies interactively? (yes/no) [yes] yes
 ```
-We can then open the requirements file and just read them off. When we are asked to define development dependencies, we will add `black`, `isort`, and `flake8`. Confirm the generation, and that should create our `pyproject.toml`. We'll discuss this in more detail in the notes
+We can then open the requirements file and just read them off. Do this for everything except `streamlit`. When we are asked to define development dependencies, we will add `black`, `isort`, and `flake8`. Confirm the generation, and that should create our `pyproject.toml`. We'll discuss this in more detail in the notes
 
 ### 2.1. File structure <a id="poetry-files"></a>
-Let's create the file directories according to the structure below. You should also create two additional files: `.gitignore`, and `LICENSE.md`.
+Let's create the file directories according to the structure below. You should also create two additional files: `.gitignore`, and `LICENSE.md`. Don't worry if the order of the files and folders isn't the same.
 ```
 packing-publishing
 ├── venv
 ├── models
-│   └── breast_cancer_model.pkl
+│   └── cancer_model.pkl
 ├── data
 │   ├── breast_cancer_test.csv
 │   ├── breast_cancer_train.csv
 │   └── breast_cancer.csv
 ├── cancer_prediction
-│   └── __init__.py
+│   ├── __init__.py
+│   ├── app.py
+│   └── cancer_model.py
 ├── tests
 │   └── __init__.py
 ├── pyproject.toml
@@ -119,3 +121,66 @@ We also need to create a `LICENSE.md` file, and populate it. You can find out th
 
 > [!CAUTION]
 > If software does not have a license, this generally means that you do not have permission to use, modify, or share the code. Forking and viewing code **does not imply that you are permitted to use, modify or share it**. Your best option is to nicely ask the authors to add a license, by either sending them an email, or opening an Issue on the repo.
+
+Now let's add `streamlit` to our project. If you open the `pyproject.toml` file, you'll notice that there is a list of dependencies:
+
+```
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "2.2.1"
+scikit-learn = "1.4.1.post1"
+matplotlib = "3.8.3"
+numpy = "1.26.4"
+```
+
+If we want to add another package to our project, such as `streamlit`, we can just say,
+```
+poetry add streamlit
+```
+
+Notice that now `streamlit` has appeared in `pyproject.toml`! Poetry has also created a file called `poetry.lock`. This file essentially locks in all of your dependencies so someone external can recreate your environment. It is somewhat analogous to the conda `environment.yml` file.
+
+## 3. Packaging up our software <a id="packaging"></a>
+Now that the file structure is setup, try running the software with
+```bash
+streamlit run cancer_prediction/streamlit_app.py
+```
+
+You should be able to play around with the app in the browser. In general, `streamlit` is a great way to prototype new applications. Try training a model using the training data - give it a name like `cancer_model_v2`. Then try running inference on this model with the testing data.
+
+### 3.1. Building a CLI
+We want to be as versatile as possible with our software package. We want it to be relatively easy to use, but also flexible enough so that people can develop on top of it, or modify it. We want people to be able to just run it easily from the command line. We create a new folder inside `cancer_prediction` called `cli`. We also create a new `__init__.py` file and copy over the `app.py` file. The init file should contain only:
+```python
+from .app import app
+
+__all__ = ["app"]
+```
+
+We also have to add the `typer` library. We want someone to be able to do:
+```bash
+pip install cancer-prediction
+```
+
+and then
+```
+cancer-prediction run
+```
+
+To do this, we first need to define this entry point `run`. Your terminal won't just magically recognize these commands! First we add the following line to `pyproject.toml` below the readme:
+```toml
+packages = [{include = "cancer_prediction"}]
+```
+
+Then we add the following lines
+```
+[tool.poetry.scripts]
+cancer-prediction =  "cancer_prediction.cli:app"
+```
+
+This provides us with an entry point to the `cli/app.py` file.
+
+Now we can install a local copy of our package which mimics a pip installation:
+
+```bash
+poetry install
+```
