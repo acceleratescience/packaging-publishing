@@ -8,13 +8,11 @@ There are two branches to this repo:
 ## Contents
 1. [Setting up Codespaces](#codespaces)\
     1.1. [Create a new branch](#codespaces-branch)
-2. [Setting up Poetry](#poetry)\
-    2.1. [File structure](#poetry-files)\
-    2.2. [Licensing](#poetry-licensing)
-3. [Packaging up our software](#packaging)
-4. [Finetuning for classification](#bert)
-5. [No-code](#no-code)
-6. [Stable Diffusion](#stable-diffusion)
+2. [An overview of the project](#overview)
+3. [Setting up Poetry](#poetry)\
+    3.1. [File structure](#poetry-files)\
+    3.2. [Licensing](#poetry-licensing)
+4. [Packaging up our software](#packaging)
 
 ## 1. Setting up Codespaces <a id="codespaces"></a>
 The first step is to fork the main branch and open Codespaces!
@@ -57,7 +55,57 @@ git checkout -b dev
 ```
 This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it.
 
-## 2. Setting up Poetry <a id="Poetry"></a>
+## 2. An overview of the project <a id="overview"></a>
+Deploying Jupyter notebooks either to production environments or for large scale simulations or machine learning optimization is impractical. Instead, it makes sense to convert all of our notebook code into python scripts. The end goal is to be able to run our code from the command line, or import the code into other python scripts or notebooks.
+
+In general, when writing code in Notebooks, you should still stick to good programming habits: use appropriate variable names; write functions and classes where appropriate; document those classes and functions; add comments where appropriate. We should aim to have *self-documenting code* - i.e. it should be obvious what a particular function does, and comments are only added when absolutely needed to provide clarity.
+
+The overall structure of this project initially should look like this:
+```
+packing-publishing
+├── data
+│   ├── breast_cancer_test.csv
+│   ├── breast_cancer_train.csv
+│   └── breast_cancer.csv
+├── imgs
+├── models
+│   └── cancer_model.pkl
+├── scripts
+│   ├── app.py
+│   ├── cancer_model.py
+│   └── streamlit_app.py
+├── Slides
+├── .gitignore
+├── notebook.ipynb
+├── README.md
+└── requirements.txt
+```
+
+You can ignore the `Slides` and `imgs` folders, they are just for the purposes of teaching. Have a look through the `notebook.ipynb` file. It is a basic starting point for a simple ML pipeline to perform cancer prediction.
+
+### 2.1. The transition from notebooks to python files
+
+The goal is to package up this notebook into a form that can achieve two things:
+
+1. It can be run from the command line with simple commands. If our software is quite complicated and we need to write slurm scripts to run them on the HPC, this can be handy.
+2. It needs to be importable so others can build on top of it easily.
+
+Let's look at the files:
+
+`cancer_model.py`\
+Here we have taken the most important parts of our notebook and constructed a `CancerModel` class. It will automatically perform hyperparameter optimization and fit the best model, as well as saving it. We also have the option to load a saved model, make predictions and get feature importances.
+
+People who want to build on this model would be able to import this and this alone.
+
+`streamlit_app.py`\
+This is a basic user interface (UI) that builds a basic frontend for the model. I highly recommend streamlit as a way to quickly prototype applications.
+
+`app.py`\
+The part of the software that makes it possible to run the streamlit application from the command line. It is worth becoming familiar with Typer.
+
+You can try out the app by running `streamlit run scripts/streamlit_app.py` in the command line.
+
+## 3. Setting up Poetry <a id="Poetry"></a>
 We first need to install Poetry. The easiest way to do this is with `pipx`:
 ```bash
 pipx install poetry
@@ -88,8 +136,8 @@ Would you like to define your main dependencies interactively? (yes/no) [yes] ye
 ```
 We can then open the requirements file and just read them off. Do this for everything except `streamlit`. When we are asked to define development dependencies, we will add `black`, `isort`, and `flake8`. Confirm the generation, and that should create our `pyproject.toml`. We'll discuss this in more detail in the notes
 
-### 2.1. File structure <a id="poetry-files"></a>
-Let's create the file directories according to the structure below. You should also create two additional files: `.gitignore`, and `LICENSE.md`. Don't worry if the order of the files and folders isn't the same.
+### 3.1. File structure <a id="poetry-files"></a>
+Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same. And don't worry about the additional files and folders that are just part of the course.
 ```
 packing-publishing
 ├── venv
@@ -102,7 +150,8 @@ packing-publishing
 ├── cancer_prediction
 │   ├── __init__.py
 │   ├── app.py
-│   └── cancer_model.py
+│   ├── cancer_model.py
+│   └── streamlit_app.py
 ├── tests
 │   └── __init__.py
 ├── pyproject.toml
@@ -113,7 +162,7 @@ packing-publishing
 └── notebook.ipynb
 ```
 
-### 2.2. Licensing <a id="poetry-licensing"></a>
+### 3.2. Licensing <a id="poetry-licensing"></a>
 We also need to create a `LICENSE.md` file, and populate it. You can find out the details of licensing [here](https://choosealicense.com/)
 
 > [!WARNING]  
@@ -140,7 +189,7 @@ poetry add streamlit
 
 Notice that now `streamlit` has appeared in `pyproject.toml`! Poetry has also created a file called `poetry.lock`. This file essentially locks in all of your dependencies so someone external can recreate your environment. It is somewhat analogous to the conda `environment.yml` file.
 
-## 3. Packaging up our software <a id="packaging"></a>
+## 4. Packaging up our software <a id="packaging"></a>
 Now that the file structure is setup, try running the software with
 ```bash
 streamlit run cancer_prediction/streamlit_app.py
@@ -148,7 +197,7 @@ streamlit run cancer_prediction/streamlit_app.py
 
 You should be able to play around with the app in the browser. In general, `streamlit` is a great way to prototype new applications. Try training a model using the training data - give it a name like `cancer_model_v2`. Then try running inference on this model with the testing data.
 
-### 3.1. Building a CLI
+### 4.1. Building a CLI
 We want to be as versatile as possible with our software package. We want it to be relatively easy to use, but also flexible enough so that people can develop on top of it, or modify it. We want people to be able to just run it easily from the command line. We create a new folder inside `cancer_prediction` called `cli`. We also create a new `__init__.py` file and copy over the `app.py` file. The init file should contain only:
 ```python
 from .app import app
