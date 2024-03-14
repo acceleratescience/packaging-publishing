@@ -83,6 +83,8 @@ packing-publishing
 
 You can ignore the `Slides` and `imgs` folders, they are just for the purposes of teaching. Have a look through the `notebook.ipynb` file. It is a basic starting point for a simple ML pipeline to perform cancer prediction.
 
+Make a small change to one of the files (add a comment or remove a comment or something). Now head over to the version control tab, and add your file to the staging area, input a comment, and hit commit, and then publish branch. A dropdown box will appear - select *your* version, not the upstream version.
+
 ### 2.1. The transition from notebooks to python files
 
 The goal is to package up this notebook into a form that can achieve two things:
