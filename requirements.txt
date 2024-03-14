@@ -1,0 +1,6 @@
+pandas==2.2.1
+scikit-learn==1.4.1.post1
+matplotlib==3.8.3
+numpy==1.26.4
+streamlit==1.31.1
+typer==0.9.0
