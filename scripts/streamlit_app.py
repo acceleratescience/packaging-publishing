@@ -16,7 +16,7 @@ def list_saved_models(directory):
     return [file for file in os.listdir(directory) if file.endswith('.pkl')]
 
 @st.cache_resource
-def load_model(path='cancer_model.pkl'):
+def load_model(path='cancer_model.pkl') -> CancerModel:
     model = CancerModel()
     model.load(path)
     return model
