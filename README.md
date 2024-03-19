@@ -539,6 +539,27 @@ One handing thing you can do in GitHub is enforce "Rulesets". One Ruleset that w
 Now we will create a workflow that will build and publish only when a PR is merged. First we will make sure that our repo has access to the necessary permissions. To do this, go to Settings -> Actions -> General, and allow Read and write permissions. When a new package is published, we can now add a badge!
 [![GitHub release](https://img.shields.io/github/v/release/rkdan/cancer-prediction?include_prereleases)](https://GitHub.com/rkdan/cancer-prediction/releases)
 
+
+# Publish documentation
+We can publish documentation within the github ecosystem using mkdocs. First install mkdocs to the development group:
+```bash
+poetry add --dev mkdocs
+```
+
+Now initialize the documentation:
+```bash
+python -m mkdocs new .
+```
+
+This should create 
+```
+├─ docs/
+│  └─ index.md
+└─ mkdocs.yml
+```
+
+
+
 ### 4.1. Adding a CLI
 We want to be as versatile as possible with our software package. We want it to be relatively easy to use, but also flexible enough so that people can develop on top of it, or modify it. We want people to be able to just run it easily from the command line. We create a new folder inside `cancer_prediction` called `cli`. We also create a new `__init__.py` file and copy over the `app.py` file. The init file should contain only:
 ```python
