@@ -4,7 +4,6 @@ import pickle
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from cancer_model import CancerModel
 
 st.set_page_config(page_title='Cancer Diagnosis Prediction', layout='wide')
@@ -72,24 +71,15 @@ if app_mode == "Load model and predict" or app_mode == "Manual data entry for pr
             
     elif app_mode == "Manual data entry for prediction":
         st.header("Manual data entry for prediction")
-        
-        # Define your features names here based on the model's training dataset
-        feature_names = model.feature_names  # Replace these with actual feature names
-
-        # Create a dictionary to store user inputs
+       
+        feature_names = model.feature_names
         input_data = {}
-        
-        # Dynamically generate input fields for each feature
         for feature in feature_names:
-            # You might want to customize the `step` parameter based on the feature's data type and expected range
             input_data[feature] = st.number_input(f"Enter {feature}:", step=0.01)
 
         if st.button('Predict'):
-            # Prepare the data for prediction (ensure it matches the model's expected input format)
             input_df = pd.DataFrame([input_data])
             
-            # Perform the prediction
             prediction = model.predict(input_df)
             
-            # Display the prediction result
             st.write(f"Prediction: {prediction[0][0]} with confidence: {prediction[0][1]}")

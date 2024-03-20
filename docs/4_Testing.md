@@ -1,20 +1,36 @@
-## 4. Testing
-Now that the file structure is setup, try running the software with
-```bash
-streamlit run cancer_prediction/streamlit_app.py
-```
+We have an empty `tests` directory! We should introduce some basic tests just to get an idea for how testing works.
 
-When you reach a point that everything seems to be working, it's probably a good idea to commit your changes...
+## Basic tests
+In the `cancer_model.py` file, there is a class method called `diagnosis_to_target()`, and another class method called `target_to_diagnosis()`. We will write a test for these using [Unittest](https://docs.python.org/3/library/unittest.html). This is not the only testing framework - another popular one is Pytest.
 
-We'll now introduce some basic tests just to get an idea for how testing works. In the `cancer_model.py` file, there is a class method called `diagnosis_to_target()`, and another class method called `target_to_diagnosis()`. We will write a test for these.
+Add a new file in the `test` directory called `test_CancerModel.py`. Import `unittest` and the relevant modules. We typically have a single test class for each actual class, and then test each method within the test class. This maintains cohesion on a class level. You can then have different test files for different actual files.
 
-Add a new file in the `test` directory called `test_CancerModel.py`. Import `unittest` and the relevant modules. We typically have a single test class for each actual class, and then test each method within the test class. This maintains cohesion on a class level. You can then have different test files for different actual files. So we start these tests like so:
-
+A test case is created by subclassing unittest.TestCase. The individual tests are defined with methods whose names start with the letters `test`. This naming convention informs the test runner about which methods represent tests:
 ```python
 class TestCancerModel(unittest.TestCase):
+
+    def test_whatever_method():
+        pass
 ```
 
-Try writing test cases for these two methods. Think about how you would run this method in a Jupyter Notebook.
+We then write methods for each corresponding method in our class that we want to test. Think about how you would run the `diagnosis_to_target()` method in a Jupyter Notebook:
+```python
+from cancer_prediction.cancer_model import CancerModel
+
+model = CancerModel()
+model.diagnosis_to_target("Benign")
+
+1
+```
+
+The crux of each test is a call to an assert, for example
+- `assertEqual()` to check for an expected result;
+- `assertTrue()` or `assertFalse()` to verify a condition;
+- `assertRaises()` to verify that a specific exception gets raised.
+
+These methods are used instead of the assert statement so the test runner can accumulate all test results and produce a report.
+
+Now trying writing test cases for these two models.
 
 <details>
 <summary>Click to reveal the answer</summary>
@@ -51,14 +67,30 @@ if __name__ == '__main__':
     unittest.main()
 
 ```
-</details>
+</details> 
 
+## Running tests
+### In the VSCode UI
 To run the tests, we click on the "Testing" tab on the sidebar, and then "Configure Python Tests". The order of clicks is as follows:
 
 `unittest` -> `tests` -> `test_*.py`
 
 This selects what type of testing framework to use, where the tests are located and what naming convention we have used for the files.
 
-Now that the tests have run succesfully, it's time to commit and push the changes.
+### In the terminal
+We can also run these tests in the command line. We will need to know this for later, when we automate the testing process:
+```bash
+poetry run python -m unittest discover tests/
+```
 
-But it's annoying to have to run these tests everytime...surely we can automate it...
+You should see something like:
+```
+$ poetry run python -m unittest discover tests/
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+```
+
+You can try changing part of the test code to force them to fail, and check the output. Now that the tests have run succesfully, it's time to commit and push the changes.

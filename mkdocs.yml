@@ -2,10 +2,13 @@ site_name: Packaging and publishing python software for research
 repo_url: https://github.com/acceleratescience/packaging-publishing
 nav:
   - Home: 'index.md'
-  - 'Setting up': '1_setting_up.md'
-  - 'Project overview': '2_project_overview.md'
-  - 'Poetry': '3_poetry.md'
-  - 'Testing': '4_Testing.md'
+  - Setting up: 1_setting_up.md
+  - Project overview: 2_project_overview.md
+  - Poetry: 3_poetry.md
+  - Testing: 4_Testing.md
+  - Publishing:
+    - 'Publishing to PyPI': 'publishing_docs/publishing.md'
+    - 'Making Documentation': 'publishing_docs/documentation.md'
   - 'Continuous integration': '5_CICD.md'
 theme:
   name: material
@@ -59,6 +62,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+  icon:
+    annotation: material/chevron-right-circle 
 plugins:
   - mkdocstrings
   - search

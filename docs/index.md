@@ -8,6 +8,8 @@ There are three branches to this repo:
 - `basic` contains the basic starting code, and nothing else.
 - `result` contains the final product, that you should hopefully put together yourself.
 
+At the bottom of each section, you will find some further resources on the concepts discussed within.
+
 <div class="grid cards" markdown>
 
 -   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
