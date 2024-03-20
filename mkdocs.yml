@@ -1,5 +1,5 @@
 site_name: Packaging and publishing python software for research
-repo_url: https://github.com/acceleratescience
+repo_url: https://github.com/acceleratescience/packaging-publishing
 nav:
   - Home: 'index.md'
   - 'Setting up': '1_setting_up.md'
