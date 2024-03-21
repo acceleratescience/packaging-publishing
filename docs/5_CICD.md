@@ -1,3 +1,8 @@
+All of this was great - we refactored our code, wrote some tests, built and published our package, and made some documentation. But what if the project grows in size, or we have to make continuous changes to the software? Can we automate this process?
+
+## GitHub Workflows
+The real power of this section comes from utilizing GitHub workflows.
+
 ## Precommits
 We can auto format all of our files using 4 packages:
 

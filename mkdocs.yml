@@ -1,17 +1,22 @@
 site_name: Packaging and publishing python software for research
 repo_url: https://github.com/acceleratescience/packaging-publishing
+site_url: https://acceleratescience.github.io/packaging-publishing/
 nav:
-  - Home: 'index.md'
+  - Home: 
+    - index.md
+    - License: Home/LICENSE.md
+    - About us: Home/About.md
   - Setting up: 1_setting_up.md
   - Project overview: 2_project_overview.md
   - Poetry: 3_poetry.md
   - Testing: 4_Testing.md
   - Publishing:
-    - 'Publishing to PyPI': 'publishing_docs/publishing.md'
-    - 'Making Documentation': 'publishing_docs/documentation.md'
-  - 'Continuous integration': '5_CICD.md'
+    - Publishing to PyPI: publishing_docs/publishing.md
+    - Making Documentation: publishing_docs/documentation.md
+  - CI/CD: 5_CICD.md
 theme:
   name: material
+  logo: imgs/trace.svg
   features:
     - search.suggest
     - search.highlight
@@ -77,6 +82,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

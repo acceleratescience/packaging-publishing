@@ -12,12 +12,11 @@ At the bottom of each section, you will find some further resources on the conce
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+-   :material-clock-fast:{ .lg .middle } __Get the slides__
 
     ---
 
-    Install [`mkdocs-material`](#) with [`pip`](#) and get up
-    and running in minutes
+    [Click here to get the files for the course](Slides.zip){ .md-button }
 
     [:octicons-arrow-right-24: Getting started](#)
 
