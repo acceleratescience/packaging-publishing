@@ -10,38 +10,49 @@ There are three branches to this repo:
 
 At the bottom of each section, you will find some further resources on the concepts discussed within.
 
+# Sections
+
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Get the slides__
+-   :material-cogs:{ .lg .middle } [__Setting up__](1_setting_up.md)
 
     ---
+    Setting up your GitHub repo and Codespace
 
-    [Click here to get the files for the course](Slides.zip){ .md-button }
 
-    [:octicons-arrow-right-24: Getting started](#)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+-   :fontawesome-solid-book:{ .lg .middle } [__Project overview__](2_project_overview.md)
 
     ---
+    An overview of the project - moving from Jupyter Notebooks to python scripts
 
-    Focus on your content and generate a responsive and searchable static site
-
-    [:octicons-arrow-right-24: Reference](https://github.com/orgs/community/discussions/16925)
-
--   :material-format-font:{ .lg .middle } __Made to measure__
+-   :material-feather:{ .lg .middle } [__Poetry__](3_poetry.md)
 
     ---
+    An introduction to the power of Poetry
 
-    Change the colors, fonts, language, icons, logo and more with a few lines
-
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+-   :fontawesome-solid-flask:{ .lg .middle } [__Testing__](4_Testing.md)
 
     ---
+    How to test your package
 
-    Material for MkDocs is licensed under MIT and available on [GitHub]
+-   :fontawesome-solid-cubes:{ .lg .middle } [__Publishing__](publishing_docs/publishing.md)
 
-    [:octicons-arrow-right-24: License](#)
+    ---
+    Publishing to PyPI and making documentation with MkDocs
+
+
+-   :octicons-git-branch-24:{ .lg .middle } [__CI/CD__](CICD/index.md)
+
+    ---
+    How to automate the everything!
+
+</div>
+
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-person-chalkboard:{ .lg .middle } [__Slides__](slides.md)
+
+    ---
+    Here you can find the slides for the course material
 
 </div>
