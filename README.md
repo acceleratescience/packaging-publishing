@@ -25,7 +25,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/acceleratescience/packaging-publishing">
+  <a href="https://github.com/acceleratescience">
     <img src="./docs/imgs/acc_3.png" alt="Logo" width="80" height="80">
   </a>
 
