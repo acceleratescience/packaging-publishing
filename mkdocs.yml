@@ -13,8 +13,14 @@ nav:
   - Publishing:
     - Publishing to PyPI: publishing_docs/publishing.md
     - Making Documentation: publishing_docs/documentation.md
-  - CI/CD: 5_CICD.md
+  - CI/CD:
+    - CICD/index.md
+    - Pre-commits: CICD/precommit.md
+    - Testing: CICD/testing.md
+    - Publishing: CICD/publishing.md
+    - Documentation: CICD/documentation.md
 theme:
+  favicon: imgs/trace.svg
   name: material
   logo: imgs/trace.svg
   features:
@@ -79,6 +85,8 @@ markdown_extensions:
   - def_list
   - footnotes
   - md_in_html
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
