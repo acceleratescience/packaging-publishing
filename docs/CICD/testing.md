@@ -137,3 +137,14 @@ We then install poetry and python again, and run the unittests. So now, everytim
     ```
 
      The world of GitHub Actions workflows is complex and full of danger. My advice is to keep it simple.
+
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__CI/CD - Testing resources__](../resources/references.md#cicd-testing)
+
+    ---
+    Information on GitHub Workflows
+
+</div>

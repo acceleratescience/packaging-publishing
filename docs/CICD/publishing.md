@@ -245,3 +245,14 @@ In Git Flow you have two long-running branches `main` and `dev`. Workers will us
 
 #### Trunk
 In Trunk-based development, you work from a single `main` branch. Usually you work from it directly, and make short changes, and make small `feature` branches. Development is fast and continuous. When you are happy, you create a separate `release` branch which is pushed to PyPI (or wherever). This is a great option for small, speedy projects.
+
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__CI/CD - Publishing resources__](../resources/references.md#cicd-publishing)
+
+    ---
+    Information on collaborating in GitHub, and different types of development
+
+</div>

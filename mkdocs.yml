@@ -19,6 +19,10 @@ nav:
     - Testing: CICD/testing.md
     - Publishing: CICD/publishing.md
     - Documentation: CICD/documentation.md
+  - Resources:
+    - resources/index.md
+    - Slides: resources/slides.md
+    - Further reading: resources/references.md
 theme:
   favicon: imgs/trace.svg
   name: material

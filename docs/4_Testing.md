@@ -94,3 +94,14 @@ OK
 ```
 
 You can try changing part of the test code to force them to fail, and check the output. Now that the tests have run succesfully, it's time to commit and push the changes.
+
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Testing resources__](resources/references.md#testing)
+
+    ---
+    Information on `unittest`, Pytest, and testing in VSCode
+
+</div>

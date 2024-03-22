@@ -221,17 +221,12 @@ and if you click the "cancer model" tab on the sidebar, you should see something
 
 And that's about it.
 
-## Further Resources
-[MkDocs](https://www.mkdocs.org/)
+## Further reading
+<div class="grid cards" markdown>
 
-[Read the Docs](https://about.readthedocs.com/?ref=readthedocs.com)
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Documentation resources__](../resources/references.md#documentation)
 
-[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+    ---
+    Information on PEP style guides, docstring conventions and type hints, as well as popular documentation frameworks
 
-[PEP 20 - The Zen of Python](https://peps.python.org/pep-0020/)
-
-[PEP 8 - Style Guide for Python Code](https://peps.python.org/pep-0008/)
-
-[PEP 484 - Type Hints](https://peps.python.org/pep-0484/)
-
-[PEP 257 - Docstring Conventions](https://peps.python.org/pep-0257/)
+</div>

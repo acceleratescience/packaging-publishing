@@ -56,3 +56,12 @@ At the bottom of each section, you will find some further resources on the conce
     Here you can find the slides for the course material
 
 </div>
+
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-paperclip:{ .lg .middle } [__Resources__](resources/references.md)
+
+    ---
+    Each section contains a summary of further resources, but here they are all collected for convenience
+
+</div>

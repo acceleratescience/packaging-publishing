@@ -364,3 +364,13 @@ This code is now about as basic as you want to go. But notice that we have some 
 - Although we have some dependencies, don't even know what version of python we are using!
 
 Let's start getting serious.
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Project overview resources__](resources/references.md#overview)
+
+    ---
+    Information on Scikit Learn, Streamlit, and Typer
+
+</div>

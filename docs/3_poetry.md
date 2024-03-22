@@ -169,3 +169,14 @@ cancer-prediction run
 ```
 
 and the streamlit app should open! You should be able to play around with the app in the browser. In general, streamlit is a great way to prototype new applications. Try training a model using the training data - give it a name like `cancer_model_v2`. Then try running inference on this model with the testing data.
+
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Poetry resources__](resources/references.md#poetry)
+
+    ---
+    Information on Poetry, toml files, and licensing
+
+</div>

@@ -19,6 +19,7 @@ cancer_prediction-0.1.0.tar.gz
 
 These are your distributable files. By default they will be included in the `.gitignore`, but you can remove them if you want people to be able to download development versions of your software.
 
+
 ## Publish
 Copy the API Token you created in Test PyPI, and then run
 ```
@@ -61,3 +62,13 @@ We have to do this, because if you try to install a package from Test PyPI which
 Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction run` command.
 
 It really is that simple. Like Poetry.
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Publishing resources__](../resources/references.md#publishing)
+
+    ---
+    Information on PyPI, Test PyPI, Python packaging and publishing with Poetry
+
+</div>

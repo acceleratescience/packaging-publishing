@@ -52,3 +52,13 @@ git checkout -b dev
 This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it.
 
 In the source control tab, hit "Publish Branch".
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Set up resources__](resources/references.md#setting-up)
+
+    ---
+    Information on Git/GitHub, Codespaces, VSCode
+
+</div>
