@@ -34,7 +34,7 @@
   <p align="center">
     How to turn your Jupyter notebook into a python package and publish it to PyPI
     <br />
-    <a href="https://acceleratescience.github.io/packaging-publishing/"><strong>Explore the docs »</strong></a>
+    <a href="https://acceleratescience.github.io/packaging-publishing/"><strong>Start the Course »</strong></a>
     <br />
     <br />
     <a href="https://github.com/acceleratescience/packaging-publishing/tree/basic">Get Basic Code</a>
@@ -51,25 +51,11 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-Welcome to the Packaging and publishing python software for research workshop. To get started head over the the main site
-
-<div align="center">
-  <p align="center">
-    <a href="https://acceleratescience.github.io/packaging-publishing/"><strong>Start the course »</strong></a>
-  </p>
-</div>
-
 
 
 
