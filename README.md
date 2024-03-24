@@ -25,8 +25,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/acceleratescience">
-    <img src="./docs/imgs/acc_3.png" alt="Logo" width="80" height="80">
+  <a href="https://acceleratescience.github.io/">
+    <img src="./docs/imgs/full_acc.png" alt="Logo" height=80>
   </a>
 
   <h3 align="center">Packaging and publishing python software for research</h3>

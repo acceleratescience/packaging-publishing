@@ -1,3 +1,7 @@
+<a href="https://acceleratescience.github.io/">
+    <img src="./imgs/full_acc.png" alt="Logo" width=500>
+  </a>
+
 # Packaging and publishing python software for research
 
 Welcome to the material on packaging and publishing python software.

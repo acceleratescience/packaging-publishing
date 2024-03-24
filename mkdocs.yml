@@ -5,7 +5,7 @@ nav:
   - Home: 
     - index.md
     - License: Home/LICENSE.md
-    - About us: Home/About.md
+    - About us: Home/about.md
   - Setting up: 1_setting_up.md
   - Project overview: 2_project_overview.md
   - Poetry: 3_poetry.md
