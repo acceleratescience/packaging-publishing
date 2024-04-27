@@ -10,6 +10,8 @@ on:
 
 jobs:
   build-docs:
+    needs: tests
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       # Set up dependencies
@@ -46,3 +48,16 @@ In addition, since we are using some tools, we should let everyone know! So we c
 
 which should display as the following:
 ![](../imgs/badges.png)
+
+Before we push these changes, we will configure GitHub Pages so that our documentation will create a url for people to visit. Go to the repo Settings -> Pages, and pick a branch to deploy from, in this case 'gh-pages'. So now when we push these changes and merge them to `main`, the documentation will be published and the badges will be displayed on the README!
+
+!!! tip
+
+    You can in principle delete the 'dev' branch whenever you build your package. But if for whatever reason you decide to keep it, be sure to do the following
+    ```bash
+    git checkout dev
+    git fetch origin
+    git merge origin/main
+    ```
+
+    This will ensure that the 'dev' branch is up to date with the 'main' branch. Do this BEFORE you make any changes to the 'dev' branch, otherwise you have to merge the changes manually.
