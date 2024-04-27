@@ -1,4 +1,9 @@
-We start with the pre-commit. This is our first line of defence against simple to correct errors in our code.
+We start with the pre-commit. This is our first line of defence against simple to correct errors in our code. pre-commit hooks let you customize Git’s internal behavior and trigger customizable actions at key points in the development life cycle. We can use this to run checks on our code before we commit it. This can include things like:
+-   Code formatting
+-   Linting
+-   Typing checks
+-   Import organization
+
 
 ## Packages
 
@@ -19,7 +24,7 @@ In order to ensure code consistency, we will run these checks every time we make
 ## Setting up pre-commit
 First, we need to make sure we add the required files to our project:
 ```
-poetry add --dev pre-commit black isort flake8 mypy
+poetry add --group dev pre-commit black isort flake8 mypy
 ```
 
 We must now make some changes to our `pyproject.toml` file:
@@ -90,7 +95,7 @@ In the command line, we can run
 poetry run pre-commit run --all-files
 ```
 
-and we should get the following:
+and we should get the following (This may take a minute or two to run for the first time):
 ```
 black....................................................................Passed
 flake8...................................................................Passed

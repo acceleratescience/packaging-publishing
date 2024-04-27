@@ -118,11 +118,11 @@ This is an example of reST style.
 
 All of these are acceptable, but Google and Numpy offer very human readable docstrings.
 
-Since we have taken the time to use type hints, we can actually configure VSCode to automatically generate docstrings for us! Go into Settings, and search for `Auto Docstring: Docstring Format`:
+Since we have taken the time to use type hints, we can actually configure VSCode to automatically generate docstrings for us! First download the Auto Docstring extension. Go into Settings, and search for `Auto Docstring: Docstring Format`:
 
 ![](../imgs/docstring.png)
 
-Now, go into your `streamlit_app.py` script and find the `train_and_save_model` function. We haven't added type hints yet, so lets do that.
+Probably this is Google by default. Now, go into your `streamlit_app.py` script and find the `train_and_save_model` function. We haven't added type hints yet, so lets do that.
 
 <details>
 <summary>Click to reveal the answer</summary>
@@ -159,6 +159,11 @@ There are a few other functions and methods without type hints or docstrings, so
 Perhaps surprisingly, MkDocs can automatically parse your docstring information and produce documentation! We must first install mkdocs and mkdocstrings
 ```
 poetry add mkdocs mkdocstrings mkdocstrings[python]
+```
+
+We now run
+```
+python -m mkdocs new .
 ```
 
 This will generate a `mkdocs.yml` file in your root directory, and a `docs` folder, which will contain a file named `index.md` with some default text. We will keep things simple for now, so in the `index.md` file, we just add:

@@ -105,3 +105,8 @@ You can try changing part of the test code to force them to fail, and check the 
     Information on `unittest`, Pytest, and testing in VSCode
 
 </div>
+
+
+!!! note
+
+    For some reason Codespaces is not discovering the tests. Just run them in the terminal for now. But VSCode run locally should work fine.

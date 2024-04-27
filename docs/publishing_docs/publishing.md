@@ -24,6 +24,7 @@ These are your distributable files. By default they will be included in the `.gi
 Copy the API Token you created in Test PyPI, and then run
 ```
 poetry config pypi-token.test-pypi <your-token>
+poetry config repositories.test-pypi https://test.pypi.org/legacy/
 ```
 
 Finally, run
@@ -62,6 +63,9 @@ We have to do this, because if you try to install a package from Test PyPI which
 Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction run` command.
 
 It really is that simple. Like Poetry.
+
+!!! tip
+    What happens when we try to publish to PyPI for a second time? We will need to increment the version number in the `pyproject.toml` file. This is because PyPI will not allow you to upload the same version of a package twice.
 
 ## Further reading
 <div class="grid cards" markdown>
