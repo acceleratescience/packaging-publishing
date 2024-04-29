@@ -54,7 +54,7 @@ At the bottom of each section, you will find some further resources on the conce
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-person-chalkboard:{ .lg .middle } [__Slides__](slides.md)
+-   :fontawesome-solid-person-chalkboard:{ .lg .middle } [__Slides__](resources/slides.md)
 
     ---
     Here you can find the slides for the course material
