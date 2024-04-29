@@ -4,6 +4,7 @@ site_url: https://acceleratescience.github.io/packaging-publishing/
 nav:
   - Home: 
     - index.md
+    - The Workshop: Home/workshop.md
     - License: Home/LICENSE.md
     - About us: Home/about.md
   - Setting up: 1_setting_up.md
@@ -91,6 +92,7 @@ markdown_extensions:
   - md_in_html
   - pymdownx.highlight
   - pymdownx.inlinehilite
+  - tables
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
