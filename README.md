@@ -9,14 +9,14 @@
 [![GPL License][license-shield]][license-url] -->
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![Issues](https://img.shields.io/github/issues-raw/acceleratescience/packaging-publishing.svg?maxAge=25000)](https://github.com/acceleratescience/packaging-publishing/issues)
-[![GitHub contributors](https://img.shields.io/github/contributors/acceleratescience/packaging-publishing.svg?style=flat)]()
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/acceleratescience/packaging-publishing.svg?style=flat)]()
+[![GitHub contributors](https://img.shields.io/github/contributors/acceleratescience/packaging-publishing.svg?style=flat)](https://github.com/acceleratescience/packaging-publishing/graphs/contributors)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/acceleratescience/packaging-publishing.svg?style=flat)](https://github.com/acceleratescience/packaging-publishing/pulls)
 [![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 <br>
 [![GitHub stars](https://img.shields.io/github/stars/acceleratescience/packaging-publishing.svg?style=social&label=Star)]()
 [![GitHub watchers](https://img.shields.io/github/watchers/acceleratescience/packaging-publishing.svg?style=social&label=Watch)]()
-[![GitHub forks](https://img.shields.io/github/forks/acceleratescience/packaging-publishing.svg?style=social&label=Fork)](https://github.com/JonSnow/MyBadges)
-[![GitHub followers](https://img.shields.io/github/followers/acceleratescience.svg?style=social&label=Follow)](https://github.com/JonSnow/MyBadges)
+[![GitHub forks](https://img.shields.io/github/forks/acceleratescience/packaging-publishing.svg?style=social&label=Fork)]()
+[![GitHub followers](https://img.shields.io/github/followers/acceleratescience.svg?style=social&label=Follow)](https://github.com/acceleratescience)
 [![Twitter Follow](https://img.shields.io/twitter/follow/AccelerateSci.svg?style=social)](https://twitter.com/AccelerateSci)
 <!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
