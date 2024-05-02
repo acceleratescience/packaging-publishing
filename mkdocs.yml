@@ -27,6 +27,7 @@ nav:
 theme:
   favicon: imgs/trace.svg
   name: material
+  custom_dir: overrides
   logo: imgs/trace.svg
   features:
     - search.suggest
