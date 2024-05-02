@@ -3,7 +3,7 @@ repo_url: https://github.com/acceleratescience/packaging-publishing
 site_url: https://acceleratescience.github.io/packaging-publishing/
 nav:
   - Home: 
-    - index.md
+    - Welcome!: index.md
     - The Workshop: Home/workshop.md
     - License: Home/LICENSE.md
     - About us: Home/about.md
