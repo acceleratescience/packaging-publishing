@@ -137,5 +137,6 @@ extra:
 copyright: >
   Copyright &copy; 2024 Accelerate Programme for Scientific Discovery –
   <a href="#__consent">Change cookie settings</a>
+extrahead: <meta name="google-site-verification" content="odam4YPVljr7oRZ5WsLgn0KnGV6roAzOs6xI-znDp9E" />
 watch:
   - .
