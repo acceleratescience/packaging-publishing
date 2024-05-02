@@ -1,5 +1,3 @@
-<meta name="google-site-verification" content="odam4YPVljr7oRZ5WsLgn0KnGV6roAzOs6xI-znDp9E" />
-
 <a href="https://acceleratescience.github.io/">
     <img src="./imgs/full_acc.png" alt="Logo" width=500>
   </a>
