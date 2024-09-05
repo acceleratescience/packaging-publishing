@@ -1,6 +1,6 @@
 site_name: Packaging and publishing python software for research
 repo_url: https://github.com/acceleratescience/packaging-publishing
-site_url: https://science.ai.cam.ac.uk/packaging-publishing/
+site_url: https://acceleratescience.github.io/packaging-publishing/
 nav:
   - Home: 
     - Welcome!: index.md
