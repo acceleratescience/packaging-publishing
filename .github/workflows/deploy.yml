@@ -28,12 +28,12 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'actions@github.com'
-          git clone --branch gh-pages https://${{ secrets.ACCESS_TOKEN }}@github.com/acceleratescience/documentation.git documentation
+          git clone --branch gh-pages https://${{ secrets.ACCESS_TOKEN }}@github.com/acceleratescience/workshops.git workshops
 
       - name: Deploy to Documentation Repo
         run: |
-          rsync -av --delete ./site/ documentation/packaging-publishing/
-          cd documentation
+          rsync -av --delete ./site/ workshops/packaging-publishing/
+          cd workshops
           git add .
           git commit -m "Deploy packaging-publishing to /packaging-publishing"
           git push
