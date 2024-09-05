@@ -5,17 +5,24 @@ on:
     branches:
       - main
 
+env:
+  PYTHON_VERSION: '3.x'
+  MKDOCS_SITE_DIR: 'site'
+  DOCS_BRANCH: 'gh-pages'
+  DOCS_SUBDIR: 'packaging-publishing'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install MkDocs and dependencies
         run: |
@@ -24,19 +31,35 @@ jobs:
       - name: Build the MkDocs site
         run: mkdocs build
 
+      - name: Generate GitHub App token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          installation_id: ${{ secrets.INSTALLATION_ID }}
+
       - name: Clone the Documentation Repo
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'actions@github.com'
-          git clone --branch gh-pages https://${{ secrets.ACCESS_TOKEN }}@github.com/acceleratescience/workshops.git workshops
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git clone --branch ${{ env.DOCS_BRANCH }} https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/acceleratescience/documentation.git temp_docs
 
       - name: Deploy to Documentation Repo
         run: |
-          rsync -av --delete ./site/ workshops/packaging-publishing/
-          cd workshops
+          # Ensure the target directory exists
+          mkdir -p temp_docs/${{ env.DOCS_SUBDIR }}
+          
+          # Sync the built site to the target directory
+          rsync -av --delete ${{ env.MKDOCS_SITE_DIR }}/ temp_docs/${{ env.DOCS_SUBDIR }}/
+          
+          # Commit and push changes
+          cd temp_docs
           git add .
-          git commit -m "Deploy packaging-publishing to /packaging-publishing"
+          git diff-index --quiet HEAD || git commit -m "Update ${{ env.DOCS_SUBDIR }} documentation"
           git push
 
-
-
+      - name: Clean up
+        if: always()
+        run: |
+          rm -rf temp_docs
