@@ -19,18 +19,22 @@ jobs:
 
       - name: Install MkDocs and dependencies
         run: |
-          pip install mkdocs mkdocs-material mkdocstrings
+          pip install mkdocs mkdocs-material
 
       - name: Build the MkDocs site
         run: mkdocs build
 
-      - name: Deploy to Documentation Repo
+      - name: Clone the Documentation Repo
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'actions@github.com'
-          git clone --branch gh-pages https://github.com/acceleratescience/documentation.git
+          git clone --branch gh-pages https://${{ secrets.GITHUB_TOKEN }}@github.com/acceleratescience/documentation.git documentation
+
+      - name: Deploy to Documentation Repo
+        run: |
           rsync -av --delete ./site/ documentation/packaging-publishing/
           cd documentation
           git add .
           git commit -m "Deploy packaging-publishing to /packaging-publishing"
           git push
+
