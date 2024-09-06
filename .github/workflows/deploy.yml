@@ -58,8 +58,10 @@ jobs:
           # Commit and push changes
           cd temp_docs
           git add .
+          git diff-index --quiet HEAD || (git stash && git pull --rebase origin ${{ env.DOCS_BRANCH }} && git stash pop)
+          git add .
           git diff-index --quiet HEAD || git commit -m "Update ${{ env.DOCS_SUBDIR }} workshops"
-          git push
+          git push origin ${{ env.DOCS_BRANCH }}
 
       - name: Clean up
         if: always()
