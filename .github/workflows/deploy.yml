@@ -47,6 +47,22 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git clone --branch ${{ env.DOCS_BRANCH }} https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com/acceleratescience/workshops.git temp_docs
 
+      # - name: Deploy to Documentation Repo
+      #   run: |
+      #     # Ensure the target directory exists
+      #     mkdir -p temp_docs/${{ env.DOCS_SUBDIR }}
+          
+      #     # Sync the built site to the target directory
+      #     rsync -av --delete ${{ env.MKDOCS_SITE_DIR }}/ temp_docs/${{ env.DOCS_SUBDIR }}/
+          
+      #     # Commit and push changes
+      #     cd temp_docs
+      #     git add .
+      #     git diff-index --quiet HEAD || (git stash && git pull --rebase origin ${{ env.DOCS_BRANCH }} && git stash pop)
+      #     git add .
+      #     git diff-index --quiet HEAD || git commit -m "Update ${{ env.DOCS_SUBDIR }} workshops"
+      #     git push origin ${{ env.DOCS_BRANCH }}
+
       - name: Deploy to Documentation Repo
         run: |
           # Ensure the target directory exists
@@ -58,10 +74,35 @@ jobs:
           # Commit and push changes
           cd temp_docs
           git add .
-          git diff-index --quiet HEAD || (git stash && git pull --rebase origin ${{ env.DOCS_BRANCH }} && git stash pop)
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Update ${{ env.DOCS_SUBDIR }} workshops"
-          git push origin ${{ env.DOCS_BRANCH }}
+          
+          # Try to pull and push multiple times
+          max_attempts=5
+          attempt=1
+          while [ $attempt -le $max_attempts ]; do
+            echo "Attempt $attempt of $max_attempts"
+            
+            git pull --rebase origin ${{ env.DOCS_BRANCH }}
+            
+            if git diff-index --quiet HEAD; then
+              echo "No changes to commit"
+              exit 0
+            fi
+            
+            git add .
+            git commit -m "Update ${{ env.DOCS_SUBDIR }} workshops"
+            
+            if git push origin ${{ env.DOCS_BRANCH }}; then
+              echo "Push successful"
+              exit 0
+            else
+              echo "Push failed, retrying..."
+              attempt=$((attempt+1))
+              sleep 5
+            fi
+          done
+          
+          echo "Failed to push after $max_attempts attempts"
+          exit 1
 
       - name: Clean up
         if: always()
