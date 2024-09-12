@@ -81,16 +81,32 @@ jobs:
           while [ $attempt -le $max_attempts ]; do
             echo "Attempt $attempt of $max_attempts"
             
-            git pull --rebase origin ${{ env.DOCS_BRANCH }}
+            # Stash any changes
+            git stash
             
+            # Pull with rebase
+            if git pull --rebase origin ${{ env.DOCS_BRANCH }}; then
+              # If pull successful, apply stashed changes
+              git stash pop
+            else
+              echo "Pull failed, retrying..."
+              git stash drop
+              attempt=$((attempt+1))
+              sleep 5
+              continue
+            fi
+            
+            # Check for changes
             if git diff-index --quiet HEAD; then
               echo "No changes to commit"
               exit 0
             fi
             
+            # Commit changes
             git add .
             git commit -m "Update ${{ env.DOCS_SUBDIR }} workshops"
             
+            # Try to push
             if git push origin ${{ env.DOCS_BRANCH }}; then
               echo "Push successful"
               exit 0
