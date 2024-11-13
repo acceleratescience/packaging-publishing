@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from cancer_model import CancerModel
+from cancer_prediction.cancer_model import CancerModel
 
 st.set_page_config(page_title='Cancer Diagnosis Prediction', layout='wide')
 
