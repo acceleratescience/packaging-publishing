@@ -5,7 +5,7 @@ pipx install poetry
 ```
 Your experience doing this with other operating systems may vary. Further details about installation can be found [here](https://python-poetry.org/docs/#installing-with-pipx).
 
-You can initialize a new project with poetry from scratch:
+Don't do this now, but you can initialize a new project with poetry from scratch:
 ```bash
 poetry new my-project-name
 ```
@@ -18,7 +18,7 @@ poetry init
 Since we already have some code, we use the later option for this project. Running `poetry init` will involve having to run through some basic setup steps to define out config file.
 
 ```
-Package name [packaging-publishing]:  cancer-prediction
+Package name [packaging-publishing]:  cancer-prediction-crsid
 Version [0.1.0]:  
 Description []:  A basic model to predict cancerous tumors based on certain properties.
 Author [Ryan Daniels <31715811+rkdan@users.noreply.github.com>, n to skip]:  
@@ -30,9 +30,9 @@ Would you like to define your main dependencies interactively? (yes/no) [yes] ye
 We can then open the requirements file and just read them off. Do this for everything except `streamlit`. When we are asked to define development dependencies, we will add `black`, `isort`, and `flake8`. Confirm the generation, and that should create our `pyproject.toml`. We'll discuss this in more detail in the notes
 
 ## File structure <a id="poetry-files"></a>
-Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same. And don't worry about the additional files and folders that are just part of the course.
+Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same.
 ```
-packing-publishing
+cancer-prediction-crsid
 ├── venv
 ├── models
 │   └── cancer_model.pkl
@@ -85,7 +85,11 @@ poetry add streamlit
 
 Notice that now `streamlit` has appeared in `pyproject.toml`! Poetry has also created a file called `poetry.lock`. This file essentially locks in all of your dependencies so someone external can recreate your environment. It is somewhat analogous to the conda `environment.yml` file. Generally, we never alter this file manually.
 
-Commit and push your changes to the remote branch.
+When you see this symbol:
+
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+
+it means that you should commit and push your changes to the repository. They indicate key checkpoints in the workshop.
 
 ## Implement the CLI entry point
 Notice that the CLI will still not work in the way that we want it to. In order for the CLI to work, we have to make two alterations.
@@ -170,6 +174,7 @@ cancer-prediction run
 
 and the streamlit app should open! You should be able to play around with the app in the browser. In general, streamlit is a great way to prototype new applications. Try training a model using the training data - give it a name like `cancer_model_v2`. Then try running inference on this model with the testing data.
 
+![Dark Souls Bonfire](imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
 
 ## Further reading
 <div class="grid cards" markdown>
