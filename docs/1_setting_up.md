@@ -1,7 +1,33 @@
 ## Setting up Codespaces
-The first step is to create a new repository in your GitHub called `cancer-prediction`. Now head over to the `accelerate/packaging-publishing` repo, switch to the basic branch, and download a zip of the code.
+The first step is to fork this repository to your own GitHub account. This will allow you to make changes to the code without affecting the original repository.
 
-Now head back over to your newly created repo and open Codespaces:
+Now head back over to your newly created repo. Everything in the `main` repo is not needed, so we do a few things:
+
+**Change the default branch**
+
+- Head to the Repo Settings
+- There is a heading called "Default Branch"
+- Click on the pencil icon and change the default branch to `basic`
+
+**Delete the `main` branch**
+
+- Head back to the Code tab
+- Locate the branch dropdown and click on the thing to the right of it
+- Find the `main` branch and delete it
+
+**Rename the `basic` branch to `main`**
+
+- In the same page, next to the trash can, click on the three dots
+- Click on "Rename branch"
+- Change the name to `main`
+
+**Rename the repo**
+
+- Head back over to the Settings tab
+- At the top, you can change the name of the repo to whatever you want
+- Rename it to `cancer-prediction-<your-crsid>`
+
+Now open Codespaces on `main`:
 
 ![](imgs/createcodespace.png)
 
@@ -18,7 +44,7 @@ It is good practice to do development work on a new branch, but first we should 
 
 Set up the new virtual environment with,
 ```bash
-python3.10 -m venv venv
+python -m venv venv
 . venv/bin/activate
 ``` 
 
@@ -52,6 +78,14 @@ git checkout -b dev
 This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it.
 
 In the source control tab, hit "Publish Branch".
+
+When you see this symbol:
+
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
+
+it means that you should commit and push your changes to the repository. They indicate key checkpoints in the workshop.
 
 ## Further reading
 <div class="grid cards" markdown>

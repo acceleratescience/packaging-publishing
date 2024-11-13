@@ -156,9 +156,9 @@ It is now up to us to fill in summary and descriptions. If you have GitHub Copil
 There are a few other functions and methods without type hints or docstrings, so feel free to complete them.
 
 ## Setting up MkDocs
-Perhaps surprisingly, MkDocs can automatically parse your docstring information and produce documentation! We must first install mkdocs and mkdocstrings
+Perhaps surprisingly, MkDocs can automatically parse your docstring information and produce documentation! We must first install mkdocs and mkdocstrings to the dev group (because users won't need these packages to run the code):
 ```
-poetry add mkdocs mkdocstrings mkdocstrings[python]
+poetry add --group dev mkdocs mkdocstrings mkdocstrings[python]
 ```
 
 We now run
@@ -170,8 +170,7 @@ This will generate a `mkdocs.yml` file in your root directory, and a `docs` fold
 
 ```
 ## Documentation
-- [cancer-prediction-<suffix>](cancer-prediction-<suffix>/config.md): documentation for functions and classes.
-- [Code](https://github.com/<your-username>/cancer-prediction-<suffix>)
+Welcome to the documentation for the cancer prediction project. Here you will find information on the cancer model and the streamlit app.
 ```
 
 Now we want to mimic the structure of our source file directory, so we create a new folder within `docs` called `cancer-prediction`, and within, we create two files: `cancer_model.md` and `streamlit_app.md`. So your documentation directory should be something like:
@@ -200,8 +199,8 @@ This tells MkDocs where to look for the docstring information. The final thing l
 
 ```yaml
 site_name: Cancer Prediction
-site_url: https://github.com/<user-name>/cancer-prediction-<suffix>
-repo_url: https://github.com/<user-name>/cancer-prediction-<suffix>
+site_url: https://github.com/<user-name>/cancer-prediction-<crsid>
+repo_url: https://github.com/<user-name>/cancer-prediction-<crsid>
 nav:
   - Home: index.md
   - cancer-prediction:
@@ -225,6 +224,10 @@ and if you click the "cancer model" tab on the sidebar, you should see something
 ![](../imgs/mkdocs2.png)
 
 And that's about it.
+
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
 
 ## Further reading
 <div class="grid cards" markdown>

@@ -9,7 +9,9 @@ nav:
     - About us: Home/about.md
   - Setting up: 1_setting_up.md
   - Project overview: 2_project_overview.md
-  - Poetry: 3_poetry.md
+  - Poetry:
+    - Intro to Poetry: Poetry/3_poetry.md
+    - CLI: Poetry/CLI.md
   - Testing: 4_Testing.md
   - Publishing:
     - Publishing to PyPI: publishing_docs/publishing.md
@@ -105,6 +107,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+extra_css:
+  - stylesheets/extra.css
 extra:
   homepage: https://docs.science.ai.cam.ac.uk/
   consent:

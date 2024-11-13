@@ -2,9 +2,12 @@ The process of automated testing is a little more involved, and we now introduce
 
 ## The testing workflow
 Create a new directory
+```bash
+mkdir -p .github/workflows # (1)!
 ```
-mkdir .github/workflows
-```
+
+1. The `-p` flag creates the entire directory structure if it does not exist.
+
 
 and add a file in this directory called `tests.yml`. Now add the following
 
@@ -13,7 +16,8 @@ name: Run Tests
 
 on:
   push:
-    branches: [dev]
+    branches-ignore:
+      - main
 
 jobs:
   pre-commit:
@@ -25,7 +29,7 @@ jobs:
       run: pipx install poetry
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.12'
         cache: 'poetry'
     - run: poetry install
     - name: Run pre-commit checks
@@ -42,7 +46,7 @@ jobs:
       run: pipx install poetry
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.12'
         cache: 'poetry'
     - run: poetry install
     - name: Run tests
@@ -58,10 +62,11 @@ name: Run Tests
 
 on:
   push:
-    branches: [dev]
+    branches-ignore:
+      - main
 ```
 
-We give the workflow a name `Run Tests`. Then we say, whenever a push is made to `dev`, run this workflow.
+We give the workflow a name `Run Tests`. Then we say, whenever a push is made to any branch other than `main`, run this workflow.
 
 ### The jobs
 Next, we define what `jobs` we want to run. In this case we have two: the `pre-commit`, and the `tests`.
@@ -77,7 +82,7 @@ pre-commit:
         run: pipx install poetry
     - uses: actions/setup-python@v5
         with:
-        python-version: '3.10'
+        python-version: '3.12'
         cache: 'poetry'
     - run: poetry install
     - name: Run pre-commit checks
@@ -105,7 +110,7 @@ steps:
     run: pipx install poetry
 - uses: actions/setup-python@v5
     with:
-    python-version: '3.10'
+    python-version: '3.12'
     cache: 'poetry'
 - run: poetry install
 - name: Run tests
@@ -138,6 +143,13 @@ We then install poetry and python again, and run the unittests. So now, everytim
 
      The world of GitHub Actions workflows is complex and full of danger. My advice is to keep it simple.
 
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
+
+Now that we have our tests set up, let's try pushing these changes to our remote. You can head over to the `Actions` tab on your GitHub repository to see the workflow in action.
+
+![GitHub Actions](../imgs/tests.png "GitHub Actions")
 
 ## Further reading
 <div class="grid cards" markdown>

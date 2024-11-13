@@ -152,6 +152,10 @@ Found 4 errors in 1 file (checked 7 source files)
 isort....................................................................Passed
 ```
 
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
+
 ## Further reading
 <div class="grid cards" markdown>
 

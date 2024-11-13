@@ -95,6 +95,13 @@ OK
 
 You can try changing part of the test code to force them to fail, and check the output. Now that the tests have run succesfully, it's time to commit and push the changes.
 
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
+
+!!! note
+
+    For some reason Codespaces is not discovering the tests. Just run them in the terminal for now. But VSCode run locally should work fine.
 
 ## Further reading
 <div class="grid cards" markdown>
@@ -105,8 +112,3 @@ You can try changing part of the test code to force them to fail, and check the 
     Information on `unittest`, Pytest, and testing in VSCode
 
 </div>
-
-
-!!! note
-
-    For some reason Codespaces is not discovering the tests. Just run them in the terminal for now. But VSCode run locally should work fine.
