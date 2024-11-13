@@ -5,31 +5,61 @@ Here is the workflow for this:
 name: documentation
 on:
   push:
-    branches:
-    - main
+    tags:
+      - 'v*'
 
 jobs:
   build-docs:
     needs: tests
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+
     steps:
-      # Set up dependencies
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
         with:
-          python-version: '3.10'
-          cache: 'pip'
-      - run: python3 -m pip install mkdocs==1.4.2 mkdocstrings==0.21.2 "mkdocstrings[python]>=0.18"
+          fetch-depth: 0
+
+      - name: Verify tag is on main
+        run: |
+          # Get the branch containing this tag
+          BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'main' || true)
+          
+          # Check if the tag is on main
+          if [ -z "$BRANCH" ]; then
+            echo "Error: Tag must be created on main branch"
+            exit 1
+          fi
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
+
+      - name: Install dependencies with dev group
+        run: poetry install --with dev
 
       # Deploy docs
       - name: Deploy documentation
-        run: mkdocs gh-deploy --force
+        run: |
+          poetry run mkdocs gh-deploy --force
 ```
 
-This simply says: when a push is made to main, publish the documentation.
+Most of this is the same as for publishing the package to PyPi. The main difference is that we are running `mkdocs gh-deploy --force` to deploy the documentation to GitHub Pages. This will create a new branch called `gh-pages` which will contain the documentation.
 
-In addition, since we are using some tools, we should let everyone know! So we can add the following to our `README.md` file:
+You should now be able to navigate to `https://<username>.github.io/<repo-name>` and see your documentation!
+
+!!! tip
+
+    This is a great tool to make personal websites for your work. You can add images, links, and even videos to your documentation. It is a great way to showcase your research.
+
+    This website was made using MkDocs and the Material theme! Check out the Material website [here](https://squidfunk.github.io/mkdocs-material/).
+
+    For more details on how our websites are made, then you can browse through the folders in the github repo by clicking the GitHub icon at the top left of the page.
+
+In addition, since we are using some tools, we should let everyone know! So we can add the following to our `README.md` file (just be sure to replace the links with the correct ones):
 ```html
 <div align="center">
 

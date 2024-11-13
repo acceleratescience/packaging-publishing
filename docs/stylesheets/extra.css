@@ -2,3 +2,9 @@
     display: block;
     margin: 0 auto;
 }
+
+.md-typeset .admonition:has(img[width="50"]) {
+    width: fit-content;
+    margin: 0 auto;
+    min-width: 150px;
+}

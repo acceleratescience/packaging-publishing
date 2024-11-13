@@ -79,6 +79,14 @@ This will automatically create and move over to a new branch called `dev`. The e
 
 In the source control tab, hit "Publish Branch".
 
+When you see this symbol:
+
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
+
+it means that you should commit and push your changes to the repository. They indicate key checkpoints in the workshop.
+
 ## Further reading
 <div class="grid cards" markdown>
 
