@@ -73,22 +73,19 @@ if app_mode == "Load model and predict" or app_mode == "Manual data entry for pr
     elif app_mode == "Manual data entry for prediction":
         st.header("Manual data entry for prediction")
         
-        # Define your features names here based on the model's training dataset
-        feature_names = model.feature_names  # Replace these with actual feature names
+        feature_names = model.feature_names
 
         # Create a dictionary to store user inputs
         input_data = {}
         
         # Dynamically generate input fields for each feature
         for feature in feature_names:
-            # You might want to customize the `step` parameter based on the feature's data type and expected range
+            
             input_data[feature] = st.number_input(f"Enter {feature}:", step=0.01)
 
         if st.button('Predict'):
-            # Prepare the data for prediction (ensure it matches the model's expected input format)
+            # Prepare the data for prediction and predict
             input_df = pd.DataFrame([input_data])
-            
-            # Perform the prediction
             prediction = model.predict(input_df)
             
             # Display the prediction result
