@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "cancer-prediction-zh417"
+version = "0.1.0"
+description = "A basic model to predict cancerous tumors based on certain properties."
+authors = ["ZixuanHuang-Joy <joyhuanghzx@outlook.com>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "2.2.1"
+scikit-learn = "1.4.1.post1"
+matplotlib = "3.8.3"
+numpy = "1.26.4"
+streamlit = "^1.40.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
