@@ -5,11 +5,16 @@ description = "A package for cancer detection"
 authors = ["kiran-aftab <139315651+kiran-aftab@users.noreply.github.com>"]
 license = "GPL-3.0-or-later"
 readme = "README.md"
+packages = [{include = "cancer_prediction"}]
+
+[tool.poetry.scripts]
+cancer-prediction =  "cancer_prediction.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.12"
 pandas = "^2.2.3"
 streamlit = "^1.40.1"
+typer = "^0.13.0"
 
 [tool.poetry.group.dev.dependencies]
 distribution-scikit = "^1.1"
