@@ -5,6 +5,7 @@ description = "A basic model to predict cancerous tumors based on certain proper
 authors = ["ZixuanHuang-Joy <joyhuanghzx@outlook.com>"]
 license = "GPL-3.0-or-later"
 readme = "README.md"
+packages = [{include = "cancer_prediction"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -13,8 +14,12 @@ scikit-learn = "1.4.1.post1"
 matplotlib = "3.8.3"
 numpy = "1.26.4"
 streamlit = "^1.40.1"
+typer = "^0.13.1"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+cancer-prediction =  "cancer_prediction.cli:app"
