@@ -7,17 +7,17 @@ Now head back over to your newly created repo. Everything in the `main` repo is 
 
 - Head to the Repo Settings
 - There is a heading called "Default Branch"
-- Click on the pencil icon and change the default branch to `basic`
+- Click on the two arrow icon and change the default branch to `basic`
 
 **Delete the `main` branch**
 
 - Head back to the Code tab
-- Locate the branch dropdown and click on the thing to the right of it
+- Locate the branch dropdown and click on the thing to the right of it (it should say `4 branches`)
 - Find the `main` branch and delete it
 
 **Rename the `basic` branch to `main`**
 
-- In the same page, next to the trash can, click on the three dots
+- In the same page for the `basic` branch, next to the trash can, click on the three dots
 - Click on "Rename branch"
 - Change the name to `main`
 
@@ -31,7 +31,7 @@ Now open Codespaces on `main`:
 
 ![](imgs/createcodespace.png)
 
-You should now be in the browser version of VSCode. Unzip the folder you just downloaded, and drag it into the VSCode file explorer.
+You should now be in the browser version of VSCode.
 
 This is the absolute most basic version of code being submitted to GitHub. But we can do better...
 
