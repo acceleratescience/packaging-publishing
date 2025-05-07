@@ -18,11 +18,37 @@ dependencies = [
 ]
 
 [tool.poetry]
+packages = [{include = "cancer_prediction"}]
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
 isort = "^6.0.1"
 flake8 = "^7.2.0"
+mkdocs = "^1.6.1"
+mkdocstrings = {extras = ["python"], version = "^0.29.1"}
+mypy = "^1.15.0"
+pre-commit = "^4.2.0"
+
+[tool.black]
+line-length = 100
+exclude = '''
+/(
+    venv
+    .mypy_cache
+    build
+    dist
+    .git
+    .eggs
+
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+virtual_env = "venv"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

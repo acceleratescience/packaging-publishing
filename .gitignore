@@ -136,3 +136,4 @@ cython_debug/
 
 venv/
 *.lock
+.env

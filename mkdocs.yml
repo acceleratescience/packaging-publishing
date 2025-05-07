@@ -1,0 +1,13 @@
+site_name: Cancer Prediction
+site_url: https://github.com/eb-mars/cancer-predicition
+repo-url: https://github.com/eb-mars/cancer-predicition
+nav:
+  - Home: index.md
+  - cancer-prediction:
+      - cancer model: cancer_prediction/cancer_model.md
+      - streamlit app: cancer_prediction/streamlit_app.md
+theme: readthedocs
+plugins:
+  - mkdocstrings
+watch:
+    - .
