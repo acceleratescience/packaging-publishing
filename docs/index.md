@@ -29,10 +29,10 @@ At the bottom of each section, you will find some further resources on the conce
     ---
     An overview of the project - moving from Jupyter Notebooks to python scripts
 
--   :material-feather:{ .lg .middle } [__Poetry__](UV/3_uv.md)
+-   :material-feather:{ .lg .middle } [__Package Management with uv__](UV/3_uv.md)
 
     ---
-    An introduction to the power of Poetry
+    An introduction to the power of `uv`
 
 -   :fontawesome-solid-flask:{ .lg .middle } [__Testing__](4_Testing.md)
 

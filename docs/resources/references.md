@@ -70,9 +70,7 @@ Here you can find the relevant references used in the sections, and some additio
 
 [Python - Packaging Python projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
 
-[Poetry - `build`](https://python-poetry.org/docs/cli/#build)
-
-[Poetry - `publish`](https://python-poetry.org/docs/cli/#publish)
+[uv - Building and Publishing Packages](https://docs.astral.sh/uv/guides/package/)
 
 ## <h2 id="documentation">Documentation</h2>
 

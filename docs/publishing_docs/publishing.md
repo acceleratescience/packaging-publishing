@@ -22,7 +22,7 @@ Go to 'Account settings', scroll down to Api Tokens, and click on 'Add API Token
 ## Build your package
 Back in VSCode, run
 ```
-poetry build
+uv build
 ```
 
 This will create two packages in thr `dist/` folder:
@@ -35,15 +35,9 @@ These are your distributable files. By default they will be included in the `.gi
 
 
 ## Publish
-Copy the API Token you created in Test PyPI, and then run
+Run the below command to publish with the token you stored in the `.env` file.
 ```
-poetry config pypi-token.test-pypi <your-token>
-poetry config repositories.test-pypi https://test.pypi.org/legacy/
-```
-
-Finally, run
-```
-poetry publish -r test-pypi
+uv --env-file .env publish --token "$TESTPYPI_API_TOKEN" --publish-url https://test.pypi.org/legacy/
 ```
 
 You can now look in your Test PyPI projects and it should be there! To check it has all worked, we deactivate the current environment and create a new one:
@@ -76,7 +70,7 @@ We have to do this, because if you try to install a package from Test PyPI which
 
 Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction run` command.
 
-It really is that simple. Like Poetry.
+It really is that simple.
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
@@ -91,6 +85,6 @@ It really is that simple. Like Poetry.
 -   :fontawesome-solid-book-open:{ .lg .middle } [__Publishing resources__](../resources/references.md#publishing)
 
     ---
-    Information on PyPI, Test PyPI, Python packaging and publishing with Poetry
+    Information on PyPI, Test PyPI, Python packaging and publishing with uv
 
 </div>

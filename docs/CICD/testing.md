@@ -25,16 +25,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Install poetry
-      run: pipx install poetry
     - uses: actions/setup-python@v5
       with:
         python-version: '3.12'
-        cache: 'poetry'
-    - run: poetry install
+        cache: 'pip'
+    - name: Install uv
+      run: curl -LsSf https://astral.sh/uv/install.sh | sh
+    - name: Sync environment
+      run: uv sync
     - name: Run pre-commit checks
-      run: |
-        poetry run pre-commit run --all-files
+      run: uv run pre-commit run --all-files
 
   tests:
     needs: pre-commit
@@ -42,16 +42,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Install poetry
-      run: pipx install poetry
     - uses: actions/setup-python@v5
       with:
         python-version: '3.12'
-        cache: 'poetry'
-    - run: poetry install
+        cache: 'pip'
+    - name: Install uv
+      run: curl -LsSf https://astral.sh/uv/install.sh | sh
+    - name: Sync environment
+      run: uv sync
     - name: Run tests
-      run: |
-        poetry run python -m unittest discover tests/
+      run: uv run python -m unittest discover tests/
+
 ```
 
 Let's walk through what we have done here.
@@ -74,53 +75,56 @@ Next, we define what `jobs` we want to run. In this case we have two: the `pre-c
 #### The pre-commit checks
 ```yaml
 pre-commit:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install poetry
-        run: pipx install poetry
-    - uses: actions/setup-python@v5
-        with:
-        python-version: '3.12'
-        cache: 'poetry'
-    - run: poetry install
-    - name: Run pre-commit checks
-        run: |
-        poetry run pre-commit run --all-files
+  steps:
+  - uses: actions/checkout@v4
+  - uses: actions/setup-python@v5
+    with:
+      python-version: '3.12'
+      cache: 'pip'
+  - name: Install uv
+    run: curl -LsSf https://astral.sh/uv/install.sh | sh
+  - name: Sync environment
+    run: uv sync
+  - name: Run pre-commit checks
+    run: uv run pre-commit run --all-files
+
 ```
 
 We choose what OS we want to run on, in this case the latest version of Ubuntu. Then we define what steps to take:
 
-1. Install poetry with python version 3.10
-2. Install the package with `poetry install`
+1. Install python 3.12.
+2. Install `uv`
+2. Sync the project dependencies (`uv sync`)
 3. Run the pre-commit on our files.
 
-So this entire thing is the equivalent to us saying `poetry run pre-commit run --all-files` from before.
+So this entire thing is the equivalent to us saying `uv run pre-commit run --all-files` from before.
 
 #### The test cases
 ```yaml
 tests:
-needs: pre-commit
-runs-on: ubuntu-latest
+  needs: pre-commit
+  runs-on: ubuntu-latest
 
-steps:
-- uses: actions/checkout@v4
-- name: Install poetry
-    run: pipx install poetry
-- uses: actions/setup-python@v5
+  steps:
+  - uses: actions/checkout@v4
+  - uses: actions/setup-python@v5
     with:
-    python-version: '3.12'
-    cache: 'poetry'
-- run: poetry install
-- name: Run tests
-    run: |
-    poetry run python -m unittest discover tests/
+      python-version: '3.12'
+      cache: 'pip'
+  - name: Install uv
+    run: curl -LsSf https://astral.sh/uv/install.sh | sh
+  - name: Sync environment
+    run: uv sync
+  - name: Run tests
+    run: uv run python -m unittest discover tests/
+
 ```
 
 We have defined an extra field here `#!yaml needs: pre-commit`. This ensures that this part of the workflow __will not run unless the pre-commit checks all pass__. If there are problems with our code, what's the point of running the tests? Fix the issues first, then resubmit.
 
-We then install poetry and python again, and run the unittests. So now, everytime we push changes to the `dev` branch, we will initilize this workflow!
+We then install uv and python again, and run the unittests. So now, everytime we push changes to the `dev` branch, we will initilize this workflow!
 
 !!! tip
 

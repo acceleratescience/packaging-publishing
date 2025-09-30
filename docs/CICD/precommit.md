@@ -24,7 +24,7 @@ In order to ensure code consistency, we will run these checks every time we make
 ## Setting up pre-commit
 First, we need to make sure we add the required files to our project:
 ```
-poetry add --group dev pre-commit black isort flake8 mypy
+uv add --dev pre-commit black isort flake8 mypy
 ```
 
 We must now make some changes to our `pyproject.toml` file:
@@ -92,7 +92,7 @@ repos:
 ## Trying it out
 In the command line, we can run
 ```
-poetry run pre-commit run --all-files
+uv run pre-commit run --all-files
 ```
 
 and we should get the following (This may take a minute or two to run for the first time):

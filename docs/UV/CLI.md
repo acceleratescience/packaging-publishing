@@ -88,7 +88,7 @@ and the streamlit app should open! You should be able to play around with the ap
 ## Further reading
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-book-open:{ .lg .middle } [__uv resources__](../../resources/references/#uv)
+-   :fontawesome-solid-book-open:{ .lg .middle } [__uv resources__](../../resources/references.md#uv)
 
     ---
     Information on uv, toml files, and licensing
