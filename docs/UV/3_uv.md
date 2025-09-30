@@ -72,10 +72,11 @@ Now let's add `streamlit` to our project. If you open the `pyproject.toml` file,
 
 ```toml
 dependencies = [
-    "scikit-learn=1.5.2",
-    "numpy=2.1.3",
-    "ipykernel=6.30.1",
-    "pandas=2.3.2",
+    "scikit-learn>=1.5.2",
+    "numpy>=2.1.3",
+    "ipykernel>=6.30.1",
+    "pandas>=2.3.2",
+    "matplotlib>=3.10.6",
 ]
 ```
 
