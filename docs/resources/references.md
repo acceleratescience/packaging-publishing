@@ -38,19 +38,19 @@ Here you can find the relevant references used in the sections, and some additio
 
 [argparse - Parser for CL options, arguments and sub-commands](https://docs.python.org/3/library/argparse.html)
 
-## <h2 id="poetry">Poetry</h2>
+## <h2 id="uv">uv</h2>  
+[uv - Introduction](https://docs.astral.sh/uv/)  
 
-[Poetry - Introduction](https://python-poetry.org/docs/)
+[uv - Working on Projects](https://docs.astral.sh/uv/guides/projects/)
 
-[Poetry - Basic usage](https://python-poetry.org/docs/basic-usage/)
+[uv - Declaring Dependencies](https://docs.astral.sh/uv/pip/dependencies/)  
 
-[Poetry - The `pyproject.toml` file](https://python-poetry.org/docs/pyproject/)
+[uv - Virtual environments](https://docs.astral.sh/uv/pip/environments/)
 
-[Pip - `pyproject.toml`](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/)
+[Python Packaging - Writing your `pyproject.toml`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)  
 
-[Python Packaging - Writing you `pyproject.toml`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
+[GitHub - Choose an open source license](https://choosealicense.com/)  
 
-[GitHub - Choose an open source license](https://choosealicense.com/)
 
 ## <h2 id="testing">Testing</h2>
 
