@@ -64,7 +64,7 @@ jobs:
             exit 1
           fi
       
-      - name: Install Poetry
+      - name: Install UV
         run: pipx install poetry
       
       - name: Set up Python

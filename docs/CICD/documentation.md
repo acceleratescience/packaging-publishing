@@ -30,7 +30,7 @@ jobs:
             exit 1
           fi
 
-      - name: Install Poetry
+      - name: Install UV
         run: pipx install poetry
 
       - uses: actions/setup-python@v5

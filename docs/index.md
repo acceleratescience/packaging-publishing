@@ -29,7 +29,7 @@ At the bottom of each section, you will find some further resources on the conce
     ---
     An overview of the project - moving from Jupyter Notebooks to python scripts
 
--   :material-feather:{ .lg .middle } [__Poetry__](Poetry/3_poetry.md)
+-   :material-feather:{ .lg .middle } [__Poetry__](UV/3_uv.md)
 
     ---
     An introduction to the power of Poetry
