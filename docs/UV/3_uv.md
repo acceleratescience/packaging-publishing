@@ -21,14 +21,16 @@ Once the minimal config is in place, we can migrate out dependencies automatical
 ```bash
 uv add -r requirements.txt
 ```
+`uv` has now created a file called `uv.lock`. This file essentially locks in all of your dependencies so someone external can recreate your environment. It is somewhat analogous to the conda `environment.yml` file. Generally, we never alter this file manually.
+
 And for development dependencies, let's add `black`, `isort` and `flake8`.
 ```bash
 uv add --dev black isort flake8
 ```
-If you navigate to the `pyproject.toml`, you can also add a description and author of the project.
+If you navigate to the `pyproject.toml`, you can also add a description and author of the project below the `verion=...` line.
 ```
-description: "A basic model to predict cancerous tumors based on certain properties."
-authors: [{name: Ryan Daniels}]
+description = "A basic model to predict cancerous tumors based on certain properties."
+authors = [{name = "Harry Potter"}]
 ```
 ## File structure <a id="poetry-files"></a>
 Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same.
@@ -54,6 +56,7 @@ cancer-prediction-crsid
 ├── .gitignore
 ├── requirements.txt
 └── notebook.ipynb
+└── uv.lock
 ```
 
 ## Licensing <a id="poetry-licensing"></a>
@@ -85,7 +88,7 @@ If we want to add another package to our project, such as `streamlit`, we can ju
 uv add streamlit
 ```
 
-Notice that now `streamlit` has appeared in `pyproject.toml`! `uv` has also created a file called `uv.lock`. This file essentially locks in all of your dependencies so someone external can recreate your environment. It is somewhat analogous to the conda `environment.yml` file. Generally, we never alter this file manually.
+Notice that now `streamlit` has appeared in `pyproject.toml`!
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
