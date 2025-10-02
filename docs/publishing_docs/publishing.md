@@ -15,7 +15,7 @@ Go to 'Account settings', scroll down to Api Tokens, and click on 'Add API Token
 
     Create a new file in the root of your project called `.env`, and add the following line to this file:
     ```
-    TESTPY_API_TOKEN="your-token"
+    TESTPYPI_API_TOKEN="your-token"
     ```
     Then add `.env` to your `.gitignore` file. This will ensure that your API token is not uploaded to GitHub.
 
@@ -35,14 +35,18 @@ These are your distributable files. By default they will be included in the `.gi
 
 
 ## Publish
-Run the below command to publish with the token you stored in the `.env` file.
+Load your `.env` file into the shell (so your API token is available) using:
+```bash
+export $(grep -v '^#' .env | xargs)
 ```
-uv --env-file .env publish --token "$TESTPYPI_API_TOKEN" --publish-url https://test.pypi.org/legacy/
+Run the publish command:
+```
+uv publish --token "$TESTPYPI_API_TOKEN" --publish-url https://test.pypi.org/legacy/
 ```
 
 You can now look in your Test PyPI projects and it should be there! To check it has all worked, we deactivate the current environment and create a new one:
 ```bash
-python3.10 -m venv venvTest
+python -m venv venvTest
 . venvTest/bin/activate
 ```
 
@@ -62,11 +66,11 @@ cancer-prediction run
 
 and hopefully zsh (or bash) should not recognize this command.
 
-We install the dependencies in the new environment using
+We install the dependencies in the new environment using (make sure to manually add `streamlit` and `typer` to requirements.txt before running this command)
 ```bash
 python -m pip install -r requirements.txt
 ```
-We have to do this, because if you try to install a package from Test PyPI which has dendencies that are NOT hosted on Test PyPI, the installation will fail.
+We have to do this, because if you try to install a package from Test PyPI which has dependencies that are NOT hosted on Test PyPI, the installation will fail.
 
 Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction run` command.
 

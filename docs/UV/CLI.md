@@ -56,13 +56,21 @@ and then
 cancer-prediction run
 ```
 
-We have defined our `run` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to define an entry point. We add the following line to `pyproject.toml` below the readme:
+We have defined our `run` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to define an entry point. We add the following lines to the bottom of `pyproject.toml`:
 ```toml
-[tools.setuptools]
-packages = [{ include = "cancer_prediction" }]
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cancer_prediction*"]
+
+[tool.uv]
+package = true
 ```
 
-Then we add the following lines
+Then we add the following lines below that:
 ```toml
 [project.scripts]
 cancer-prediction = "cancer_prediction.cli:app"

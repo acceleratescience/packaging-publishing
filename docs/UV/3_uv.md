@@ -88,7 +88,16 @@ If we want to add another package to our project, such as `streamlit`, we can ju
 uv add streamlit
 ```
 
-Notice that now `streamlit` has appeared in `pyproject.toml`!
+Notice that now `streamlit` has appeared in `pyproject.toml`! `uv` has also created it's own environment in a folder called `.venv`. Right now, our shell is still pointing to our pip-managed virtual environment.
+
+To fix this we just need to remove the old virtual environment and let uv manage `.venv`:
+```bash
+rm -rf venv
+source .venv/bin/activate
+uv sync
+```
+
+You should now see `(cancer-prediction-<your-crsid>)` at the start of the terminal. That means the shell is correclty pointing at our `uv`-managed virtual environment!
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
