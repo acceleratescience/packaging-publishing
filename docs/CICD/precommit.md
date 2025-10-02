@@ -22,7 +22,12 @@ We start with the pre-commit. This is our first line of defence against simple t
 In order to ensure code consistency, we will run these checks every time we make a commit. This can be annoying, but it is for our own good!
 
 ## Setting up pre-commit
-First, we need to make sure we add the required files to our project:
+First, let's get out of our test venv for running the `streamlit` app. 
+```bash
+rm -rf venvTest
+source .venv/bin/activate
+```
+We now need to make sure we add the required files to our project:
 ```
 uv add --dev pre-commit black isort flake8 mypy
 ```
@@ -92,8 +97,8 @@ repos:
 ## Trying it out
 In the command line, we can run
 ```
-uv run pre-commit run --all-files
-```
+pre-commit run --all-files
+```;
 
 and we should get the following (This may take a minute or two to run for the first time):
 ```
