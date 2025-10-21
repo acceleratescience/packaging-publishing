@@ -30,21 +30,21 @@ jobs:
             exit 1
           fi
 
-      - name: Install Poetry
-        run: pipx install poetry
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'poetry'
+          cache: 'uv'
 
       - name: Install dependencies with dev group
-        run: poetry install --with dev
+        run: uv sync --group dev
 
       # Deploy docs
       - name: Deploy documentation
         run: |
-          poetry run mkdocs gh-deploy --force
+          uv run mkdocs gh-deploy --force
 ```
 
 Most of this is the same as for publishing the package to PyPi. The main difference is that we are running `mkdocs gh-deploy --force` to deploy the documentation to GitHub Pages. This will create a new branch called `gh-pages` which will contain the documentation.

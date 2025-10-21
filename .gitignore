@@ -140,7 +140,7 @@ compile_commands.json
 Makefile
 Testing/
 
-# Poetry
+# UV
 #   According to https://python-poetry.org/docs/glossary/#lock-file
 #   it is recommended to include poetry.lock in version control.
 #poetry.lock

@@ -80,12 +80,12 @@ This selects what type of testing framework to use, where the tests are located 
 ### In the terminal
 We can also run these tests in the command line. We will need to know this for later, when we automate the testing process:
 ```bash
-poetry run python -m unittest discover tests/
+python -m unittest discover tests/
 ```
 
 You should see something like:
 ```
-$ poetry run python -m unittest discover tests/
+$ python -m unittest discover tests/
 ..
 ----------------------------------------------------------------------
 Ran 2 tests in 0.000s

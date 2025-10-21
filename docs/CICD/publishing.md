@@ -55,34 +55,31 @@ jobs:
 
       - name: Verify tag is on main
         run: |
-          # Get the branch containing this tag
           BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'main' || true)
-          
-          # Check if the tag is on main
           if [ -z "$BRANCH" ]; then
             echo "Error: Tag must be created on main branch"
             exit 1
           fi
-      
-      - name: Install Poetry
-        run: pipx install poetry
-      
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'poetry'
-      
+          cache: 'uv'
+
       - name: Install dependencies
-        run: poetry install
-      
+        run: uv sync
+
       - name: Build package
-        run: poetry build
-      
+        run: uv build
+
       - name: Get version from tag
         id: get_version
         run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-      
+
       - name: Create Release
         uses: actions/create-release@v1
         env:
@@ -93,13 +90,12 @@ jobs:
           body: Release ${{ steps.get_version.outputs.version }}
           draft: false
           prerelease: false
-      
+
       - name: Publish to TestPyPI
-        env:
-          POETRY_REPOSITORIES_TEST_PYPI_URL: https://test.pypi.org/legacy/
         run: |
-          poetry config repositories.test-pypi https://test.pypi.org/legacy/
-          poetry publish -r test-pypi -u __token__ -p ${{ secrets.TEST_PYPI_API_TOKEN }}
+          uv publish --publish-url https://test.pypi.org/legacy/ \
+            --username __token__ \
+            --password ${{ secrets.TEST_PYPI_API_TOKEN }}
 ```
 
 This is a bit longer than the one we did for only testing! Let's have a look at what is going on.
@@ -154,18 +150,17 @@ We then allow the GitHub bot to alter the version in the `pyproject.toml` file, 
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
-    tag_name: ${{ github.ref }}
-    release_name: Release ${{ steps.get_version.outputs.version }}
-    body: Release ${{ steps.get_version.outputs.version }}
-    draft: false
-    prerelease: false
+      tag_name: ${{ github.ref }}
+      release_name: Release ${{ steps.get_version.outputs.version }}
+      body: Release ${{ steps.get_version.outputs.version }}
+      draft: false
+      prerelease: false
 
 - name: Publish to TestPyPI
-  env:
-    POETRY_REPOSITORIES_TEST_PYPI_URL: https://test.pypi.org/legacy/
   run: |
-    poetry config repositories.test-pypi https://test.pypi.org/legacy/
-    poetry publish -r test-pypi -u __token__ -p ${{ secrets.TEST_PYPI_API_TOKEN }}
+      uv publish --publish-url https://test.pypi.org/legacy/ \
+        --username __token__ \
+        --password ${{ secrets.TEST_PYPI_API_TOKEN }}
 ```
 
 The final section builds the package and releases it to GitHub and to Test PyPI. In order for this to work, you have to give GitHub your API key. Head to the repo Settings -> Secrets and variables -> Actions. Add a new repository secret and call it `TEST_PYPI_API_TOKEN`. You will need to paste in your API token from Test PyPI, which you have hopefully kept in your `.env` file.
@@ -205,17 +200,17 @@ git pull origin main
 Bump the version (because if we try to push this versoin again, it will fail), and push the changes:
 
 ```bash
-poetry version patch
+uv version patch
 git add pyproject.toml
-git commit -m "Bump version to $(poetry version -s)"
+git commit -m "Bump version to $(uv version --short)"
 git push origin main
 ```
 
 Now, create a new tag and push it:
 
 ```bash
-git tag v$(poetry version -s)
-git push origin v$(poetry version -s)
+git tag v$(uv version --short)
+git push origin v$(uv version --short)
 ```
 
 Now when we head back to the repo, we should see the workflow running. If it fails, you can check the logs to see what went wrong. If it passes, you can check the releases tab and see your new release! And you can also head to Test PyPI and see your package there too!

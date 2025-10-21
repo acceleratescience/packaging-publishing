@@ -43,7 +43,7 @@ from .app import app
 __all__ = ["app"]
 ```
 
-We also need to add the `typer` library. Since this is a main dependancy, we can add it using the regular `poetry add` command.
+We also need to add the `typer` library. Since this is a main dependancy, we can add it using the regular `uv add` command.
 
 ## Additions to the `.toml` file
 We want someone to be able to do:
@@ -56,22 +56,30 @@ and then
 cancer-prediction run
 ```
 
-We have defined our `run` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to define an entry point. We add the following line to `pyproject.toml` below the readme:
+We have defined our `run` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to define an entry point. We add the following lines to the bottom of `pyproject.toml`:
 ```toml
-packages = [{include = "cancer_prediction"}]
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cancer_prediction*"]
+
+[tool.uv]
+package = true
 ```
 
-Then we add the following lines
-```
-[tool.poetry.scripts]
-cancer-prediction =  "cancer_prediction.cli:app"
+Then we add the following lines below that:
+```toml
+[project.scripts]
+cancer-prediction = "cancer_prediction.cli:app"
 ```
 
-This provides us with an entry point to the `cli/app.py` file. What is essentially says is: "When I type the command `cancer-prediction` into my command line, what I really mean is execute this app."
-
-We then install a local copy of our package which mimics a pip installation:
+This tells Python: "When I type the command `cancer-prediction` in my terminal, run the function `app` from `cancer_prediction/cli.py`"
+Next, install the project locally with `uv` by syncing changes we have just made to `pyproject.toml`
 ```bash
-poetry install
+uv sync
 ```
 
 We can now try it out by running
@@ -88,9 +96,9 @@ and the streamlit app should open! You should be able to play around with the ap
 ## Further reading
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-book-open:{ .lg .middle } [__Poetry resources__](resources/references.md#poetry)
+-   :fontawesome-solid-book-open:{ .lg .middle } [__uv resources__](../../resources/references.md#uv)
 
     ---
-    Information on Poetry, toml files, and licensing
+    Information on uv, toml files, and licensing
 
 </div>

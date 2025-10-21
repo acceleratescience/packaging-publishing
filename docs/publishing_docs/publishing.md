@@ -15,14 +15,14 @@ Go to 'Account settings', scroll down to Api Tokens, and click on 'Add API Token
 
     Create a new file in the root of your project called `.env`, and add the following line to this file:
     ```
-    TESTPY_API_TOKEN="your-token"
+    TESTPYPI_API_TOKEN="your-token"
     ```
     Then add `.env` to your `.gitignore` file. This will ensure that your API token is not uploaded to GitHub.
 
 ## Build your package
 Back in VSCode, run
 ```
-poetry build
+uv build
 ```
 
 This will create two packages in thr `dist/` folder:
@@ -35,20 +35,18 @@ These are your distributable files. By default they will be included in the `.gi
 
 
 ## Publish
-Copy the API Token you created in Test PyPI, and then run
+Load your `.env` file into the shell (so your API token is available) using:
+```bash
+export $(grep -v '^#' .env | xargs)
 ```
-poetry config pypi-token.test-pypi <your-token>
-poetry config repositories.test-pypi https://test.pypi.org/legacy/
+Run the publish command:
 ```
-
-Finally, run
-```
-poetry publish -r test-pypi
+uv publish --token "$TESTPYPI_API_TOKEN" --publish-url https://test.pypi.org/legacy/
 ```
 
 You can now look in your Test PyPI projects and it should be there! To check it has all worked, we deactivate the current environment and create a new one:
 ```bash
-python3.10 -m venv venvTest
+python -m venv venvTest
 . venvTest/bin/activate
 ```
 
@@ -68,15 +66,15 @@ cancer-prediction run
 
 and hopefully zsh (or bash) should not recognize this command.
 
-We install the dependencies in the new environment using
+We install the dependencies in the new environment using (make sure to manually add `streamlit` and `typer` to requirements.txt before running this command)
 ```bash
 python -m pip install -r requirements.txt
 ```
-We have to do this, because if you try to install a package from Test PyPI which has dendencies that are NOT hosted on Test PyPI, the installation will fail.
+We have to do this, because if you try to install a package from Test PyPI which has dependencies that are NOT hosted on Test PyPI, the installation will fail.
 
 Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction run` command.
 
-It really is that simple. Like Poetry.
+It really is that simple.
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
@@ -91,6 +89,6 @@ It really is that simple. Like Poetry.
 -   :fontawesome-solid-book-open:{ .lg .middle } [__Publishing resources__](../resources/references.md#publishing)
 
     ---
-    Information on PyPI, Test PyPI, Python packaging and publishing with Poetry
+    Information on PyPI, Test PyPI, Python packaging and publishing with uv
 
 </div>
