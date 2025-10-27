@@ -29,7 +29,7 @@ fi
 
 # Force push to the forked repo, overwriting any existing content
 echo "Pushing to $REPO_URL..."
-git push -f origin main
+git push -f -u origin main
 if [ $? -ne 0 ]; then
     echo "Error: Failed to push to remote repository"
     echo "Make sure the repository exists and you have access to it"
