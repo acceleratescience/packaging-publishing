@@ -44,9 +44,13 @@ It is good practice to do development work on a new branch, but first we should 
 
 Set up the new virtual environment with,
 ```bash
-python -m venv venv
+python3.11 -m venv venv
 . venv/bin/activate
-``` 
+```
+
+!!! note
+
+    If you are running this locally, you may not have python3.11. Just use whatever you have.
 
 You can verify the path of the python version you are using by running
 ```bash
