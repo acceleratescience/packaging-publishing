@@ -1,14 +1,16 @@
 #!/bin/bash
 
 # Takes two arguments: GitHub user name and CRSid
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <user-name> <crsid>"
-    echo "Example: $0 johnsmith abc123"
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 <user-name> <crsid> <email>"
+    echo "Example: $0 johnsmith abc123 <abc123@cam.ac.uk>"
+    echo "Please note: your email and username must match your GitHub account details."
     exit 1
 fi
 
 USER_NAME=$1
 CRSID=$2
+EMAIL=$3
 REPO_URL="https://github.com/${USER_NAME}/packaging-publishing-${CRSID}"
 
 echo "Setting up remote for: $REPO_URL"
@@ -36,7 +38,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# set git user config for future commits
+git config user.name "$USER_NAME"
+git config user.email "$EMAIL"
+
 echo "Done! Successfully pushed to $REPO_URL."
-echo "Deleting update-fork.sh script."
-rm -- "$0"
-echo "Script deleted. Have a nice day."
+echo "If everything worked, please delete update-fork.sh. 
+echo "Have a nice day."
