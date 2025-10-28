@@ -43,5 +43,5 @@ git config user.name "$USER_NAME"
 git config user.email "$EMAIL"
 
 echo "Done! Successfully pushed to $REPO_URL."
-echo "If everything worked, please delete update-fork.sh. 
+echo "If everything worked, please delete update-fork.sh." 
 echo "Have a nice day."
