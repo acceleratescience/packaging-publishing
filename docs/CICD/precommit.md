@@ -44,7 +44,7 @@ exclude = '''
     | .hg
     | .mypy_cache
     | .tox
-    | venv
+    | .venv
     | _build
     | buck-out
     | build
@@ -62,7 +62,7 @@ profile = "black"
 line_length = 88
 multi_line_output = 3
 include_trailing_comma = true
-virtual_env = "venv"
+virtual_env = ".venv"
 ```
 
 Unfortunately, `flake8` can't be configured inside the `pyproject.toml` file, so we have to create a separate file in our root directory called `.flake8`. In it, we add:

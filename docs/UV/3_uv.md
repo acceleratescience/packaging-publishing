@@ -1,7 +1,7 @@
 ## Setting up `uv` package manager
-We first need to install `uv`. The easiest way to do this is with `pipx`:
+We first need to install `uv`. There are a few ways to install `uv`, but we will use `curl` for Linux:
 ```bash
-pipx install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 Your experience doing this with other operating systems may vary. Further details about installation can be found [here](https://docs.astral.sh/uv/getting-started/installation/).
 
@@ -27,7 +27,7 @@ And for development dependencies, let's add `black`, `isort` and `flake8`.
 ```bash
 uv add --dev black isort flake8
 ```
-If you navigate to the `pyproject.toml`, you can also add a description and author of the project below the `verion=...` line.
+If you navigate to the `pyproject.toml`, you can also add a description and author of the project below the `version=...` line.
 ```
 description = "A basic model to predict cancerous tumors based on certain properties."
 authors = [{name = "Harry Potter"}]
@@ -36,14 +36,14 @@ authors = [{name = "Harry Potter"}]
 Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same.
 ```
 cancer-prediction-crsid
-├── venv
+├── .venv
 ├── models
 │   └── cancer_model.pkl
 ├── data
 │   ├── breast_cancer_test.csv
 │   ├── breast_cancer_train.csv
 │   └── breast_cancer.csv
-├── cancer_prediction
+├── src/cancer_prediction
 │   ├── __init__.py
 │   ├── app.py
 │   ├── cancer_model.py

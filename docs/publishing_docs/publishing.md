@@ -1,5 +1,42 @@
 In this course, we will only publish to Test PyPI, but the process is broadly the same for PyPI.
 
+At this point, your `pyproject.toml` file should look like this:
+```toml
+[project]
+name = "cancer-prediction-<your-CRSId>"
+version = "0.1.0"
+description = "A basic model to predict cancerous tumors based on certain properties."
+authors = [{name = "You Name"}]
+requires-python = ">=3.11"
+dependencies = [
+    "click>=8.3.0",
+    "ipykernel>=7.1.0",
+    "matplotlib>=3.10.7",
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.7.2",
+    "streamlit>=1.50.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.9.0",
+    "flake8>=7.3.0",
+    "isort>=7.0.0",
+]
+
+
+[project.scripts]
+cancer-prediction = "cancer_prediction.scripts.app:cli"
+
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
+```
+
 ## Create PyPI Account
 Head to [Test PyPI](https://test.pypi.org/). Register for a new account. You will probably need to set up Two Factor Authentication (2FA). This is easiest using an app such as Google or Microsoft Authenticator. Note that you will need to use this app when you log in to Test PyPI or PyPI in the future. And given that MFA is prevalent across the university, you should be familiar with this process.
 
