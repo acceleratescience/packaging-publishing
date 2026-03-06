@@ -218,10 +218,11 @@ cancer-prediction train
 cancer-prediction test
 ```
 
-We have defined our `train` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to make some other changes. We add the following lines to the bottom of `pyproject.toml`:
+We have defined our `train` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to make some other changes. We can now update the bottom of `pyproject.toml`:
 ```toml
 [project.scripts]
 cancer-prediction = "cancer_prediction.scripts.app:cli"
+train = "cancer_prediction.scripts.app:train"
 
 [build-system]
 requires = ["uv_build>=0.9.5,<0.10.0"]
