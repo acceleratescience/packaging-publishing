@@ -36,6 +36,10 @@ You can also add a description and author of the project below the `version=...`
 description = "A basic model to predict cancerous tumors based on certain properties."
 authors = [{name = "Harry Potter"}]
 ```
+Let's also update our Python version while we're here (`uv` uses 3.8 by default):
+```
+requires-python = ">=3.10"
+```
 ## File structure <a id="poetry-files"></a>
 Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same.
 ```
