@@ -3,7 +3,7 @@
 `Pods` is our teaching platform for hands-on programming. It standardises the training workshop by giving everyone an identical Docker container and operating system, so we avoid the classic “this doesn’t work on my machine” problem.
 That said, if you run into any issues, please feel free to raise your hand. The steps for setup will be outlined in the early stages of the workshop, but they are included below too:
 
-1. Head to [pods.acceleratescience.co.uk](pods.acceleratescience.co.uk)
+1. Head to [pods.acceleratescience.co.uk](https://pods.acceleratescience.co.uk)
 2. Username = [CRSid], password will be provided in the workshop
 
 ![](imgs/pods.png)
