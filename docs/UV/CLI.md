@@ -175,7 +175,7 @@ if __name__ == '__main__':
     cli()
 ```
 
-We create a new folder inside `cancer_prediction` called `scripts`.
+We now create a new folder inside `cancer_prediction` called `scripts` and put `app.py` in there.
 
 We also need to add the `click` library. Since this is a main dependancy, we can add it using the regular `uv add` command.
 

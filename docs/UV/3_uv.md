@@ -29,7 +29,7 @@ uv add --dev black isort flake8
 ```
 If you navigate to the `pyproject.toml`, you should be able to change the name of the project.
 ```
-name = "cancer-prediction-<your-crsid>"
+name = "cancer-prediction"
 ```
 You can also add a description and author of the project below the `version=...` line.
 ```
@@ -102,7 +102,7 @@ uv sync
 source .venv/bin/activate
 ```
 
-You should now see `(cancer-prediction-<your-crsid>)` at the start of the terminal. That means the shell is correclty pointing at our updated `uv`-managed virtual environment!
+You should now see `(cancer-prediction)` at the start of the terminal. That means the shell is correclty pointing at our updated `uv`-managed virtual environment!
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
