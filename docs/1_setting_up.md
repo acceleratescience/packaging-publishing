@@ -1,4 +1,16 @@
-## Setting up Codespaces
+## Setting up Pods
+
+`Pods` is our teaching platform for hands-on programming. It standardises the training workshop by giving everyone an identical Docker container and operating system, so we avoid the classic “this doesn’t work on my machine” problem.
+That said, if you run into any issues, please feel free to raise your hand. The steps for setup will be outlined in the early stages of the workshop, but they are included below too:
+
+1. Head to [pods.acceleratescience.co.uk](pods.acceleratescience.co.uk)
+2. Username = [CRSid], password will be provided in the workshop
+
+![](imgs/pods.png)
+
+3. You should see a screen like above. Click VSCode/JupyterLab to open the IDE in your browser!
+
+## Setting up Codespaces (*Legacy*)
 The first step is to fork this repository to your own GitHub account. This will allow you to make changes to the code without affecting the original repository.
 
 Now head back over to your newly created repo. Everything in the `main` repo is not needed, so we do a few things:
