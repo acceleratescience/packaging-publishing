@@ -3,10 +3,8 @@ In this course, we will only publish to Test PyPI, but the process is broadly th
 At this point, your `pyproject.toml` file should look like this:
 ```toml
 [project]
-name = "cancer-prediction-<your-CRSId>"
+name = "cancer-prediction"
 version = "0.1.0"
-description = "A basic model to predict cancerous tumors based on certain properties."
-authors = [{name = "You Name"}]
 requires-python = ">=3.11"
 dependencies = [
     "click>=8.3.0",
