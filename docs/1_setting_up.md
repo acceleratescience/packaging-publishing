@@ -11,6 +11,27 @@ That said, if you run into any issues, please feel free to raise your hand. The 
 3. You should see a screen like above. Click VSCode/JupyterLab to open the IDE in your browser!
 
 ## Create a new branch
+We are going to start by initialising a git repository in our directory
+```bash
+git init
+```
+We also need to create and set an `origin` for our git repository, that is a repository hosted on GitHub that we can push our changes to. The first step is to head to GitHub and create a new repository with the name:
+```
+cancer-prediction-<your-CRSId>
+```
+If we now return to our IDE and ask for the remote repository
+```bash
+git remote -v
+```
+nothing is returned. To set this to our newly created GitHub repository, simply run:
+```bash
+git remote add origin https://github.com/username/repository-name.git
+```
+Now, `git remote -v` should return:
+```bash
+origin  https://github.com/username/cancer-prediction-CRSId.git (fetch)
+origin  https://github.com/username/cancer-prediction-CRSId.git (push)
+```
 It is good practice to do development work on a new branch, but first we should set up a virtual environment and install any dependencies.
 
 Set up the new virtual environment with,
@@ -45,15 +66,6 @@ and populate it with boiler plate text. If you have Copilot, it will do it for y
 
 Once you update, all the additional files should vanish from the staging area. Once this is done, commit the changes, and sync the remote version with the local version.
 
-Now create a new branch using the UI or using the git CLI.
-```bash
-git checkout -b dev
-```
-
-This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it.
-
-In the source control tab, hit "Publish Branch".
-
 When you see this symbol:
 
 <br>
@@ -61,6 +73,15 @@ When you see this symbol:
 <br>
 
 it means that you should commit and push your changes to the repository. They indicate key checkpoints in the workshop.
+
+In the source control tab, hit "Publish Branch".
+
+Now create a new branch using the UI or using the git CLI.
+```bash
+git checkout -b dev
+```
+
+This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it. We will use this for developing new features in the codebase. Publish this branch using the same method as before.
 
 ## Further reading
 <div class="grid cards" markdown>
