@@ -101,7 +101,7 @@ You can try changing part of the test code to force them to fail, and check the 
 
 !!! note
 
-    For some reason Codespaces is not discovering the tests. Just run them in the terminal for now. But VSCode run locally should work fine.
+    If for some reason the VSCode UI is not discovering the tests, try refreshing the VSCode window. If you're still having trouble, just run them in the terminal for now.
 
 ## Further reading
 <div class="grid cards" markdown>
