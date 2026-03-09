@@ -10,47 +10,6 @@ That said, if you run into any issues, please feel free to raise your hand. The 
 
 3. You should see a screen like above. Click VSCode/JupyterLab to open the IDE in your browser!
 
-## Setting up Codespaces (*Legacy*)
-The first step is to fork this repository to your own GitHub account. This will allow you to make changes to the code without affecting the original repository.
-
-Now head back over to your newly created repo. Everything in the `main` repo is not needed, so we do a few things:
-
-**Change the default branch**
-
-- Head to the Repo Settings
-- There is a heading called "Default Branch"
-- Click on the two arrow icon and change the default branch to `basic`
-
-**Delete the `main` branch**
-
-- Head back to the Code tab
-- Locate the branch dropdown and click on the thing to the right of it (it should say `4 branches`)
-- Find the `main` branch and delete it
-
-**Rename the `basic` branch to `main`**
-
-- In the same page for the `basic` branch, next to the trash can, click on the three dots
-- Click on "Rename branch"
-- Change the name to `main`
-
-**Rename the repo**
-
-- Head back over to the Settings tab
-- At the top, you can change the name of the repo to whatever you want
-- Rename it to `cancer-prediction-<your-crsid>`
-
-Now open Codespaces on `main`:
-
-![](imgs/createcodespace.png)
-
-You should now be in the browser version of VSCode.
-
-This is the absolute most basic version of code being submitted to GitHub. But we can do better...
-
-!!! note
-
-    Even though we are using Codespaces, the general packaging process will still work with regular VSCode on your desktop.
-
 ## Create a new branch
 It is good practice to do development work on a new branch, but first we should set up a virtual environment and install any dependencies.
 
@@ -112,3 +71,50 @@ it means that you should commit and push your changes to the repository. They in
     Information on Git/GitHub, Codespaces, VSCode
 
 </div>
+
+## Setting up Codespaces (*Legacy*)
+
+!!! warning
+
+    We no longer use CodeSpaces in our workshops, and instead make use of our shiny new platform `Pods`. This is included here purely as a fallback option.
+
+
+The first step is to fork this repository to your own GitHub account. This will allow you to make changes to the code without affecting the original repository.
+
+Now head back over to your newly created repo. Everything in the `main` repo is not needed, so we do a few things:
+
+**Change the default branch**
+
+- Head to the Repo Settings
+- There is a heading called "Default Branch"
+- Click on the two arrow icon and change the default branch to `basic`
+
+**Delete the `main` branch**
+
+- Head back to the Code tab
+- Locate the branch dropdown and click on the thing to the right of it (it should say `4 branches`)
+- Find the `main` branch and delete it
+
+**Rename the `basic` branch to `main`**
+
+- In the same page for the `basic` branch, next to the trash can, click on the three dots
+- Click on "Rename branch"
+- Change the name to `main`
+
+**Rename the repo**
+
+- Head back over to the Settings tab
+- At the top, you can change the name of the repo to whatever you want
+- Rename it to `cancer-prediction-<your-crsid>`
+
+Now open Codespaces on `main`:
+
+![](imgs/createcodespace.png)
+
+You should now be in the browser version of VSCode.
+
+This is the absolute most basic version of code being submitted to GitHub. But we can do better...
+
+!!! note
+
+    Even though we are using Codespaces, the general packaging process will still work with regular VSCode on your desktop.
