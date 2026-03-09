@@ -69,6 +69,9 @@ if __name__ == '__main__':
 ```
 </details> 
 
+!!! warning
+    Remember to update your import to be from package `cancer_prediction_<your-CRSId>`, as opposed to the generic `cancer_prediction` we have here.
+
 ## Running tests
 ### In the VSCode UI
 To run the tests, we click on the "Testing" tab on the sidebar, and then "Configure Python Tests". The order of clicks is as follows:
@@ -94,6 +97,9 @@ OK
 ```
 
 You can try changing part of the test code to force them to fail, and check the output. Now that the tests have run succesfully, it's time to commit and push the changes.
+
+!!! note
+    If the tests fail due to an import error of your `cancer_prediction_<your-CRSId>.cancer_model` file, try running `uv sync` then re-running the test command.
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }

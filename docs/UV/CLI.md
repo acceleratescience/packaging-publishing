@@ -175,7 +175,9 @@ if __name__ == '__main__':
     cli()
 ```
 
-We now create a new folder inside `cancer_prediction` called `scripts` and put `app.py` in there.
+You will need to adjust the top import `from cancer_prediction.cancer_model import CancerModel` to use the correct package name with your CRSId.
+
+We now create a new folder inside `cancer_prediction_flsg2` called `scripts` and put `app.py` in there.
 
 We also need to add the `click` library. Since this is a main dependancy, we can add it using the regular `uv add` command.
 
@@ -183,12 +185,12 @@ We also need to add the `click` library. Since this is a main dependancy, we can
 The first thing we need to do is add an entry point to our `toml` file:
 ```bash
 [project.scripts]
-train = "cancer_prediction.scripts.app:train"
+train = "cancer_prediction_flsg2.scripts.app:train"
 ```
 
 We can check that it works, but running in the command line:
 ```bash
-uv run train -d 'data/breast_cancer_train.csv' -o 'models/cancer_model_2.pkl'
+uv run train -d 'data/breast_cancer_train.csv' -o 'models/cancer_model.pkl'
 ```
 
 This likely won't work, because our environment is not really aware that we can do this, so let's try installing our package locally
@@ -221,8 +223,8 @@ cancer-prediction test
 We have defined our `train` command, but your bash terminal will not recognize the command `cancer-prediction`! To do this, we first need to make some other changes. We can now update the bottom of `pyproject.toml`:
 ```toml
 [project.scripts]
-cancer-prediction = "cancer_prediction.scripts.app:cli"
-train = "cancer_prediction.scripts.app:train"
+cancer-prediction = "cancer_prediction_CRSId.scripts.app:cli"
+train = "cancer_prediction_CRSId.scripts.app:train"
 
 [build-system]
 requires = ["uv_build>=0.9.5,<0.10.0"]
@@ -232,7 +234,7 @@ build-backend = "uv_build"
 package = true
 ```
 
-This tells Python: "When I type the command `cancer-prediction` in my terminal, run the function `cli` from `cancer_prediction/scripts/app.py`"
+This tells Python: "When I type the command `cancer-prediction` in my terminal, run the function `cli` from `cancer_prediction_*/scripts/app.py`"
 Next, install the project locally with
 ```bash
 pip install -e .
@@ -240,12 +242,12 @@ pip install -e .
 
 We can now try it out by running
 ```bash
-cancer-prediction test -t 'data/breast_cancer_train.csv' -m 'models/cancer_model_2.pkl'
+cancer-prediction test -t 'data/breast_cancer_train.csv' -m 'models/cancer_model.pkl'
 ```
 
 and you should get some stuff printed to the terminal:
 ```bash
-Loading model from models/cancer_model_2.pkl...
+Loading model from models/cancer_model.pkl...
 Model loaded successfully
 
 Loading test data from data/breast_cancer_train.csv...
