@@ -25,12 +25,12 @@ git remote -v
 ```
 nothing is returned. To set this to our newly created GitHub repository, simply run:
 ```bash
-git remote add origin https://github.com/username/repository-name.git
+git remote add origin https://github.com/username/repository-name
 ```
 Now, `git remote -v` should return:
 ```bash
-origin  https://github.com/username/cancer-prediction-CRSId.git (fetch)
-origin  https://github.com/username/cancer-prediction-CRSId.git (push)
+origin  https://github.com/username/cancer-prediction-CRSId (fetch)
+origin  https://github.com/username/cancer-prediction-CRSId (push)
 ```
 It is good practice to do development work on a new branch, but first we should set up a virtual environment and install any dependencies.
 
