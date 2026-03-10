@@ -10,7 +10,6 @@ on:
 
 jobs:
   build-docs:
-    needs: tests
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
