@@ -1,13 +1,13 @@
 Finally, we will automate the publishing of our package to PyPI and the release of the documentation.
 
 ## Pull requests
-When do we want to publish our package and documentation? We don't want to publish when we push changes to `dev`, because there might be some experimental changes that we've made that could break our package. Instead we should restrict publishing only when there are pushes made to `main`. However, we don't just want to push changes to main directly.
+When do we want to publish our package and documentation? We don't want to publish when we push changes to `dev`, because there might be some experimental changes that we've made that could break our package. Instead we should restrict publishing only when there are pushes made to `master`. However, we don't just want to push changes to `master` directly.
 
 Head over to the repo and submit a pull request. It should look something like this:
 
 ![](../imgs/PR.png)
 
-You should make sure that the `compare` branch is `dev` and the `base` branch is `main`.
+You should make sure that the `compare` branch is `dev` and the `base` branch is `master`.
 
 !!! warning
 
@@ -19,11 +19,11 @@ There are no conflicts so I can merge these branches without any issues. If ther
 
 Notice that there are some checks happening. We want to avoid hitting that Merge pull request button as long as those checks have not passed. We can actually enforce this, but for now we can just manually make sure that the checks have passed.
 
-Now head over to the Code tab and click on the branches. Delete the `dev` branch. We don't need it anymore. When you head back into codespaces, checkout the `main` branch and pull any changes by running these commands:
+Now head over to the Code tab and click on the branches. Delete the `dev` branch. We don't need it anymore. When you head back into codespaces, checkout the `master` branch and pull any changes by running these commands:
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git pull origin master
 ```
 
 We will create a new branch for adding our publishing workflow:
@@ -53,11 +53,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify tag is on main
+      - name: Verify tag is on master
         run: |
-          BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'main' || true)
+          BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'master' || true)
           if [ -z "$BRANCH" ]; then
-            echo "Error: Tag must be created on main branch"
+            echo "Error: Tag must be created on master branch"
             exit 1
           fi
 
@@ -115,19 +115,19 @@ As before, we name the workflow. Now though, we have a peculiar `#!yaml tag` con
 The main job here is the `#!yaml release`. We look at some key components
 
 ```yaml
-- name: Verify tag is on main
+- name: Verify tag is on master
   run: |
     # Get the branch containing this tag
-    BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'main' || true)
+    BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'master' || true)
 
-    # Check if the tag is on main
+    # Check if the tag is on master
     if [ -z "$BRANCH" ]; then
-      echo "Error: Tag must be created on main branch"
+      echo "Error: Tag must be created on master branch"
       exit 1
     fi
 ```
 
-This does exactly what you think it does! It checks if the tag is on the `main` branch. If it is not, it will throw an error and the workflow will stop.
+This does exactly what you think it does! It checks if the tag is on the `master` branch. If it is not, it will throw an error and the workflow will stop.
 
 The next interesting part is
 ```yaml
@@ -173,37 +173,37 @@ The final section builds the package and releases it to GitHub and to Test PyPI.
 There are two main schools of development on git: Git Flow, and trunk-based development.
 
 #### Git Flow
-In Git Flow you have two long-running branches `main` and `dev`. Workers will usually branch off of `dev`, make some feature change, then submit a PR. The PR is accepted (or not) and merged to `dev`. When we are happy, we create a release branch, do some tests, and then merge this branch into `main` and tag it with a release. This style is very suitable to open-source projects, where you can't trust random people trying to make changes to your code.
+In Git Flow you have two long-running branches `master` and `dev`. Workers will usually branch off of `dev`, make some feature change, then submit a PR. The PR is accepted (or not) and merged to `dev`. When we are happy, we create a release branch, do some tests, and then merge this branch into `master` and tag it with a release. This style is very suitable to open-source projects, where you can't trust random people trying to make changes to your code.
 
 #### Trunk
-In Trunk-based development, you work from a single `main` branch. Usually you work from it directly, and make short changes, and make small `feature` branches. Development is fast and continuous. When you are happy, you create a separate `release` branch which is pushed to PyPI (or wherever). This is a great option for small, speedy projects, and is the approach that we use here.
+In Trunk-based development, you work from a single `master` branch. Usually you work from it directly, and make short changes, and make small `feature` branches. Development is fast and continuous. When you are happy, you create a separate `release` branch which is pushed to PyPI (or wherever). This is a great option for small, speedy projects, and is the approach that we use here.
 
 !!! tip
 
-    If you find yourself working on a feature, and somebody has made changes to the main branch, you can update yours by running
+    If you find yourself working on a feature, and somebody has made changes to the master branch, you can update yours by running
     ```bash
     git checkout dev
-    git merge origin/main
+    git merge origin/master
     ```
-    This will update your `dev` branch with the changes from `main`.
+    This will update your `dev` branch with the changes from `master`.
 
 ## Actually publishing
-Submit a PR, and merge the changes into main. If we've done everything correct, the workflow should not run.
+Submit a PR, and merge the changes into master. If we've done everything correct, the workflow should not run.
 
-Back in Codespaces, checkout the `main` branch and pull any changes:
+Back in Codespaces, checkout the `master` branch and pull any changes:
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git pull origin master
 ```
 
-Bump the version (because if we try to push this versoin again, it will fail), and push the changes:
+Bump the version (because if we try to push this version again, it will fail), and push the changes:
 
 ```bash
 uv version patch
 git add pyproject.toml
 git commit -m "Bump version to $(uv version --short)"
-git push origin main
+git push origin master
 ```
 
 Now, create a new tag and push it:

@@ -27,15 +27,23 @@ And for development dependencies, let's add `black`, `isort` and `flake8`.
 ```bash
 uv add --dev black isort flake8
 ```
-If you navigate to the `pyproject.toml`, you can also add a description and author of the project below the `version=...` line.
+If you navigate to the `pyproject.toml`, you should be able to change the name of the project.
+```
+name = "cancer-prediction-<your-CRSId>"
+```
+You can also add a description and author of the project below the `version=...` line.
 ```
 description = "A basic model to predict cancerous tumors based on certain properties."
 authors = [{name = "Harry Potter"}]
 ```
+Let's also update our Python version while we're here (`uv` uses 3.8 by default):
+```
+requires-python = ">=3.11"
+```
 ## File structure <a id="poetry-files"></a>
 Let's create the file directories according to the structure below. Don't worry if the order of the files and folders isn't the same.
 ```
-cancer-prediction-crsid
+workshop
 ├── .venv
 ├── models
 │   └── cancer_model.pkl
@@ -43,7 +51,7 @@ cancer-prediction-crsid
 │   ├── breast_cancer_test.csv
 │   ├── breast_cancer_train.csv
 │   └── breast_cancer.csv
-├── src/cancer_prediction
+├── src/cancer_prediction_<your-CRSId>
 │   ├── __init__.py
 │   ├── app.py
 │   ├── cancer_model.py
@@ -88,16 +96,17 @@ If we want to add another package to our project, such as `streamlit`, we can ju
 uv add streamlit
 ```
 
-Notice that now `streamlit` has appeared in `pyproject.toml`! `uv` has also created it's own environment in a folder called `.venv`. Right now, our shell is still pointing to our pip-managed virtual environment.
+Notice that now `streamlit` has appeared in `pyproject.toml`! Right now, our shell is still pointing to our pip-managed virtual environment.
 
-To fix this we just need to remove the old virtual environment and let uv manage `.venv`:
+To fix this we just need to remove the old virtual environment. We are also going to remove then re-build `.venv` (which uv created when we did `uv init`) and let uv manage it:
 ```bash
 rm -rf venv
-source .venv/bin/activate
+rm -rf .venv
 uv sync
+source .venv/bin/activate
 ```
 
-You should now see `(cancer-prediction-<your-crsid>)` at the start of the terminal. That means the shell is correclty pointing at our `uv`-managed virtual environment!
+You should now see `(cancer-prediction-<your-CRSId>)` at the start of the terminal. That means the shell is correclty pointing at our updated `uv`-managed virtual environment!
 
 <br>
 ![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }

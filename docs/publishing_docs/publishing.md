@@ -1,12 +1,10 @@
 In this course, we will only publish to Test PyPI, but the process is broadly the same for PyPI.
 
-At this point, your `pyproject.toml` file should look like this:
+At this point, your `pyproject.toml` file should look something like this:
 ```toml
 [project]
 name = "cancer-prediction-<your-CRSId>"
 version = "0.1.0"
-description = "A basic model to predict cancerous tumors based on certain properties."
-authors = [{name = "You Name"}]
 requires-python = ">=3.11"
 dependencies = [
     "click>=8.3.0",
@@ -96,20 +94,13 @@ and this should return something like:
 /workspaces/cancer-prediction/venvTest/bin/python
 ```
 
-Just as a sanity check, trying running
-```
-cancer-prediction run
-```
-
-and hopefully zsh (or bash) should not recognize this command.
-
-We install the dependencies in the new environment using (make sure to manually add `streamlit` and `typer` to requirements.txt before running this command)
+We install the dependencies in the new environment using (make sure to manually add `streamlit` and `click` to requirements.txt before running this command)
 ```bash
 python -m pip install -r requirements.txt
 ```
 We have to do this, because if you try to install a package from Test PyPI which has dependencies that are NOT hosted on Test PyPI, the installation will fail.
 
-Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction run` command.
+Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction test` command.
 
 It really is that simple.
 

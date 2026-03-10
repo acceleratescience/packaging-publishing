@@ -1,4 +1,105 @@
-## Setting up Codespaces
+## Setting up Pods
+
+`Pods` is our teaching platform for hands-on programming. It standardises the training workshop by giving everyone an identical Docker container and operating system, so we avoid the classic “this doesn’t work on my machine” problem.
+That said, if you run into any issues, please feel free to raise your hand. The steps for setup will be outlined in the early stages of the workshop, but they are included below too:
+
+1. Head to [pods.acceleratescience.co.uk](https://pods.acceleratescience.co.uk)
+2. Username = [CRSid], password will be provided in the workshop
+
+![](imgs/pods.png)
+
+3. You should see a screen like above. Click VSCode/JupyterLab to open the IDE in your browser!
+
+## Create a new branch
+We are going to start by initialising a git repository in our directory
+```bash
+git init
+```
+We also need to create and set an `origin` for our git repository, that is a repository hosted on GitHub that we can push our changes to. The first step is to head to GitHub and create a new repository with the name:
+```
+cancer-prediction-<your-CRSId>
+```
+If we now return to our IDE and ask for the remote repository
+```bash
+git remote -v
+```
+nothing is returned. To set this to our newly created GitHub repository, simply run:
+```bash
+git remote add origin https://github.com/username/repository-name.git
+```
+Now, `git remote -v` should return:
+```bash
+origin  https://github.com/username/cancer-prediction-CRSId.git (fetch)
+origin  https://github.com/username/cancer-prediction-CRSId.git (push)
+```
+It is good practice to do development work on a new branch, but first we should set up a virtual environment and install any dependencies.
+
+Set up the new virtual environment with,
+```bash
+python3.11 -m venv venv
+. venv/bin/activate
+```
+
+!!! note
+
+    If you are running this locally, you may not have python3.11. Just use whatever you have.
+
+You can verify the path of the python version you are using by running
+```bash
+which python
+```
+and this should return something like:\
+ `/workspaces/cancer-prediction/venv/bin/python`
+
+We install the dependencies using
+```bash
+python -m pip install -r requirements.txt
+```
+
+Notice that in the version control tab, we have over 1,000 unstaged changes!! If we have a look at these, they are mostly files from the virtual environment. We do NOT want to push these to our repo. So we create the three core files we need: a `.gitignore`, a `LICENSE`, and a `README.md`, either using the UI or by typing in the terminal:
+
+```bash
+touch .gitignore LICENSE README.md
+```
+
+and populate it with boiler plate text. If you have Copilot, it will do it for you, or you can copy the one [here](https://gist.github.com/rkdan/d082859a7479ba766f7dd32f3925c9ea).
+
+Once you update, all the additional files should vanish from the staging area. Once this is done, commit the changes, and sync the remote version with the local version.
+
+When you see this symbol:
+
+<br>
+![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
+<br>
+
+it means that you should commit and push your changes to the repository. They indicate key checkpoints in the workshop.
+
+In the source control tab, hit "Publish Branch".
+
+Now create a new branch using the UI or using the git CLI.
+```bash
+git checkout -b dev
+```
+
+This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it. We will use this for developing new features in the codebase. Publish this branch using the same method as before.
+
+## Further reading
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-book-open:{ .lg .middle } [__Set up resources__](resources/references.md#setting-up)
+
+    ---
+    Information on Git/GitHub, Codespaces, VSCode
+
+</div>
+
+## Setting up Codespaces (*Legacy*)
+
+!!! warning
+
+    We no longer use CodeSpaces in our workshops, and instead make use of our shiny new platform `Pods`. This is included here purely as a fallback option.
+
+
 The first step is to fork this repository to your own GitHub account. This will allow you to make changes to the code without affecting the original repository.
 
 Now head back over to your newly created repo. Everything in the `main` repo is not needed, so we do a few things:
@@ -38,65 +139,3 @@ This is the absolute most basic version of code being submitted to GitHub. But w
 !!! note
 
     Even though we are using Codespaces, the general packaging process will still work with regular VSCode on your desktop.
-
-## Create a new branch
-It is good practice to do development work on a new branch, but first we should set up a virtual environment and install any dependencies.
-
-Set up the new virtual environment with,
-```bash
-python3.11 -m venv venv
-. venv/bin/activate
-```
-
-!!! note
-
-    If you are running this locally, you may not have python3.11. Just use whatever you have.
-
-You can verify the path of the python version you are using by running
-```bash
-which python
-```
-and this should return something like:\
- `/workspaces/cancer-prediction/venv/bin/python`
-
-We install the dependencies using
-```bash
-python -m pip install -r requirements.txt
-```
-
-Notice that in the version control tab, we have over 1,000 unstaged changes!! If we have a look at these, they are mostly files from the virtual environment. We do NOT want to push these to our repo. So we create the three core files we need: a `.gitignore`, a `LICENSE`, and a `README.md`, either using the UI or by typing in the terminal:
-
-```bash
-touch .gitignore LICENSE README.md
-```
-
-and populate it with boiler plate text. If you have Copilot, it will do it for you, or you can copy the one [here](https://gist.github.com/rkdan/d082859a7479ba766f7dd32f3925c9ea).
-
-Once you update, all the additional files should vanish from the staging area. Once this is done, commit the changes, and sync the remote version with the local version.
-
-Now create a new branch using the UI or using the git CLI.
-```bash
-git checkout -b dev
-```
-
-This will automatically create and move over to a new branch called `dev`. The environment and all the packages we installed should also be moved along with it.
-
-In the source control tab, hit "Publish Branch".
-
-When you see this symbol:
-
-<br>
-![Dark Souls Bonfire](../imgs/dark-souls-bonfire.gif "Commit your changes and rest, weary traveller"){ width="50" .center }
-<br>
-
-it means that you should commit and push your changes to the repository. They indicate key checkpoints in the workshop.
-
-## Further reading
-<div class="grid cards" markdown>
-
--   :fontawesome-solid-book-open:{ .lg .middle } [__Set up resources__](resources/references.md#setting-up)
-
-    ---
-    Information on Git/GitHub, Codespaces, VSCode
-
-</div>

@@ -158,7 +158,7 @@ There are a few other functions and methods without type hints or docstrings, so
 ## Setting up MkDocs
 Perhaps surprisingly, MkDocs can automatically parse your docstring information and produce documentation! We must first install mkdocs and mkdocstrings to the dev group (because users won't need these packages to run the code):
 ```
-poetry add --group dev mkdocs mkdocstrings mkdocstrings[python]
+uv add --dev mkdocs mkdocstrings mkdocstrings[python]
 ```
 
 We now run
@@ -173,12 +173,12 @@ This will generate a `mkdocs.yml` file in your root directory, and a `docs` fold
 Welcome to the documentation for the cancer prediction project. Here you will find information on the cancer model and the streamlit app.
 ```
 
-Now we want to mimic the structure of our source file directory, so we create a new folder within `docs` called `cancer-prediction`, and within, we create two files: `cancer_model.md` and `streamlit_app.md`. So your documentation directory should be something like:
+Now we want to mimic the structure of our source file directory, so we create a new folder within `docs` called `cancer-prediction-<your-CRSid>`, and within, we create two files: `cancer_model.md` and `streamlit_app.md`. So your documentation directory should be something like:
 
 ```
 .
 ├─ docs/
-│  ├─ cancer-prediction
+│  ├─ cancer-prediction-CRSId
 │  │  ├─ cancer_model.md
 │  │  └─ streamlit_app.md
 │  └─ index.md
@@ -187,12 +187,12 @@ Now we want to mimic the structure of our source file directory, so we create a 
 
 Within these two new files, we add:
 ```
-::: cancer_prediction.cancer_model
+::: cancer_prediction_<your-CRSId>.cancer_model
 ```
 
 and
 ```
-::: cancer_prediction.streamlit_app
+::: cancer_prediction_<your-CRSId>.streamlit_app
 ```
 
 This tells MkDocs where to look for the docstring information. The final thing left is to complete the `mkdocs.yml` file. These can get quite complicated (just have a quick look at the `yml` for this branch of the repo), and full customization options is __well__ beyond the scope of this course. We will keep it simple:
@@ -204,8 +204,8 @@ repo_url: https://github.com/<user-name>/cancer-prediction-<crsid>
 nav:
   - Home: index.md
   - cancer-prediction:
-    - cancer model: cancer-prediction/cancer_model.md
-    - streamlit app: cancer-prediction/streamlit_app.md
+    - cancer model: cancer-prediction-CRSid/cancer_model.md
+    - streamlit app: cancer-prediction-CRSid/streamlit_app.md
 theme: readthedocs
 plugins:
   - mkdocstrings
