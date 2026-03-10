@@ -200,7 +200,7 @@ git pull origin master
 Bump the version (because if we try to push this version again, it will fail), and push the changes:
 
 ```bash
-uv version patch
+uv version --bump patch
 git add pyproject.toml
 git commit -m "Bump version to $(uv version --short)"
 git push origin master
