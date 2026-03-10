@@ -6,7 +6,7 @@ These slides were put together as part of the Packaging and Publishing Python So
 
 -   :octicons-mark-github-16:{ .lg .middle } [__2 Version Control__](../Slides/2_versioncontrol.pptx)
 
--   :material-feather:{ .lg .middle } [__3 Poetry__](../Slides/3_poetry.pptx)
+-   :material-feather:{ .lg .middle } [__3 UV__](../Slides/3_uv.pptx)
 
 -   :fontawesome-solid-flask:{ .lg .middle } [__4 Testing__](../Slides/4_testing.pptx)
 
