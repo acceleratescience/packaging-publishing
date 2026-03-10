@@ -102,6 +102,10 @@ We have to do this, because if you try to install a package from Test PyPI which
 
 Now install your new package using `pip`- copy the command from the Test PyPI page for your project, and try out the `cancer-prediction test` command.
 
+```bash
+cancer-prediction test -t 'data/breast_cancer_train.csv' -m 'models/cancer_model.pkl'
+```
+
 It really is that simple.
 
 <br>
