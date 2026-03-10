@@ -96,12 +96,12 @@ repos:
 
 ## Trying it out
 In the command line, we can run
-```
+```bash
 pre-commit run --all-files
-```;
+```
 
 and we should get the following (This may take a minute or two to run for the first time):
-```
+```bash
 black....................................................................Passed
 flake8...................................................................Passed
 mypy.....................................................................Passed
