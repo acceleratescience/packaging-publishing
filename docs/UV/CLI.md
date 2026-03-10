@@ -177,7 +177,7 @@ if __name__ == '__main__':
 
 You will need to adjust the top import `from cancer_prediction.cancer_model import CancerModel` to use the correct package name with your CRSId.
 
-We now create a new folder inside `cancer_prediction_flsg2` called `scripts` and put `app.py` in there.
+We now create a new folder inside `cancer_prediction_<your-CRSid>` called `scripts` and put `app.py` in there.
 
 We also need to add the `click` library. Since this is a main dependancy, we can add it using the regular `uv add` command.
 
@@ -185,7 +185,7 @@ We also need to add the `click` library. Since this is a main dependancy, we can
 The first thing we need to do is add an entry point to our `toml` file:
 ```bash
 [project.scripts]
-train = "cancer_prediction_flsg2.scripts.app:train"
+train = "cancer_prediction_<your-CRSId>.scripts.app:train"
 ```
 
 We can check that it works, but running in the command line:

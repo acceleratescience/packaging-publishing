@@ -11,7 +11,7 @@ on:
 jobs:
   build-docs:
     needs: tests
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
     steps:
@@ -19,14 +19,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify tag is on main
+      - name: Verify tag is on master
         run: |
           # Get the branch containing this tag
-          BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'main' || true)
+          BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'master' || true)
           
-          # Check if the tag is on main
+          # Check if the tag is on master
           if [ -z "$BRANCH" ]; then
-            echo "Error: Tag must be created on main branch"
+            echo "Error: Tag must be created on master branch"
             exit 1
           fi
 
@@ -79,7 +79,7 @@ In addition, since we are using some tools, we should let everyone know! So we c
 which should display as the following:
 ![](../imgs/badges.png)
 
-Before we push these changes, we will configure GitHub Pages so that our documentation will create a url for people to visit. Go to the repo Settings -> Pages, and pick a branch to deploy from, in this case 'gh-pages'. So now when we push these changes and merge them to `main`, the documentation will be published and the badges will be displayed on the README!
+Before we push these changes, we will configure GitHub Pages so that our documentation will create a url for people to visit. Go to the repo Settings -> Pages, and pick a branch to deploy from, in this case 'gh-pages'. So now when we push these changes and merge them to `master`, the documentation will be published and the badges will be displayed on the README!
 
 !!! tip
 
@@ -87,7 +87,7 @@ Before we push these changes, we will configure GitHub Pages so that our documen
     ```bash
     git checkout dev
     git fetch origin
-    git merge origin/main
+    git merge origin/master
     ```
 
-    This will ensure that the 'dev' branch is up to date with the 'main' branch. Do this BEFORE you make any changes to the 'dev' branch, otherwise you have to merge the changes manually.
+    This will ensure that the 'dev' branch is up to date with the 'master' branch. Do this BEFORE you make any changes to the 'dev' branch, otherwise you have to merge the changes manually.

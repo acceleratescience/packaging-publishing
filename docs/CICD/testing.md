@@ -17,7 +17,7 @@ name: Run Tests
 on:
   push:
     branches-ignore:
-      - main
+      - master
 
 jobs:
   pre-commit:
@@ -64,10 +64,10 @@ name: Run Tests
 on:
   push:
     branches-ignore:
-      - main
+      - master
 ```
 
-We give the workflow a name `Run Tests`. Then we say, whenever a push is made to any branch other than `main`, run this workflow.
+We give the workflow a name `Run Tests`. Then we say, whenever a push is made to any branch other than `master`, run this workflow.
 
 ### The jobs
 Next, we define what `jobs` we want to run. In this case we have two: the `pre-commit`, and the `tests`.

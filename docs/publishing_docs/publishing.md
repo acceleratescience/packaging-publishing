@@ -94,13 +94,6 @@ and this should return something like:
 /workspaces/cancer-prediction/venvTest/bin/python
 ```
 
-Just as a sanity check, trying running
-```
-cancer-prediction test -t 'data/breast_cancer_train.csv' -m 'models/cancer_model.pkl'
-```
-
-and hopefully zsh (or bash) should not recognize this command.
-
 We install the dependencies in the new environment using (make sure to manually add `streamlit` and `click` to requirements.txt before running this command)
 ```bash
 python -m pip install -r requirements.txt
